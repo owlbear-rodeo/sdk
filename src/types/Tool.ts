@@ -1,4 +1,5 @@
 import { Item } from "./items/Item";
+import { KeyFilter } from "./KeyFilter";
 import { Metadata } from "./Metatdata";
 import { Vector2 } from "./Vector2";
 
@@ -8,45 +9,61 @@ export interface ToolContext {
   metadata: Metadata;
 }
 
-export interface ToolIcon {
-  svgIcon: string;
-  label: string;
-}
-
 export type ToolEvent = {
   pointerPosition: Vector2;
   target?: Item;
   transformer?: boolean;
 };
 
-export interface ToolState {
-  id: string;
-  svgIcon: string;
-  label: string;
-  show: boolean;
-  disabled: boolean;
+type PermissionFilter = ("EDIT" | "DELETE" | "CREATE")[];
+
+type Permissions = {
+  fog?: PermissionFilter;
+  images?: PermissionFilter;
+  drawing?: PermissionFilter;
+  ruler?: PermissionFilter;
+  pointer?: PermissionFilter;
+  text?: PermissionFilter;
+};
+
+export interface ToolFilter {
+  activeTools?: string[];
+  activeModes?: string[];
+  permissions?: Permissions;
+  roles?: ("GM" | "PLAYER")[];
+  metadata?: KeyFilter<Metadata>[];
 }
 
-export interface ToolModeState extends ToolState {
+export interface ToolIcon {
+  svgIcon: string;
+  label: string;
+  filter?: ToolFilter;
+}
+
+export interface ToolCursorFilter extends ToolFilter {
+  target?: KeyFilter<Item>[];
+}
+
+export interface ToolCursor {
   cursor: string;
+  filter?: ToolCursorFilter;
 }
 
 export interface ToolAction {
-  shouldShow: (context: ToolContext) => boolean;
-  isDisabled?: (context: ToolContext) => boolean;
+  icons: ToolIcon[];
+  disabled?: ToolFilter;
   onClick?: (context: ToolContext, elementId: string) => void;
-  renderIcon: (context: ToolContext) => ToolIcon;
   shortcut?: string;
 }
 
 export interface ToolMode {
-  shouldShow: (context: ToolContext) => boolean;
-  isDisabled?: (context: ToolContext) => boolean;
+  icons: ToolIcon[];
+  disabled?: ToolFilter;
+  cursors?: ToolCursor[];
   onClick?: (
     context: ToolContext,
     elementId: string,
   ) => boolean | undefined | void;
-  renderIcon: (context: ToolContext) => ToolIcon;
   onToolClick?: (
     context: ToolContext,
     event: ToolEvent,
@@ -65,18 +82,16 @@ export interface ToolMode {
   onToolDragMove?: (context: ToolContext, event: ToolEvent) => void;
   onToolDragEnd?: (context: ToolContext, event: ToolEvent) => void;
   onToolDragCancel?: (context: ToolContext, event: ToolEvent) => void;
-  getCursor?: (context: ToolContext, event: ToolEvent) => string;
   shortcut?: string;
 }
 
 export interface Tool {
-  shouldShow: (context: ToolContext) => boolean;
-  isDisabled?: (context: ToolContext) => boolean;
+  icons: ToolIcon[];
+  disabled?: ToolFilter;
   onClick?: (
     context: ToolContext,
     elementId: string,
   ) => boolean | undefined | void;
-  renderIcon: (context: ToolContext) => ToolIcon;
   shortcut?: string;
   defaultMode?: string;
   defaultMetadata?: Metadata;
