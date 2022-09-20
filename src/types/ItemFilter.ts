@@ -10,10 +10,3 @@ export type ItemFilter<ItemType extends Item> =
   | ItemFilterArray
   | ItemTypeFilterFunction<ItemType>
   | ItemFilterFunction;
-
-export interface ItemKeyFilter {
-  key: keyof Item;
-  value: Item[keyof Item];
-  operator?: "==" | "!=";
-  coordinator?: "&&" | "||";
-}
