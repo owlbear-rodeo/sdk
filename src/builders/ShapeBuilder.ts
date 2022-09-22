@@ -1,3 +1,4 @@
+import PlayerApi from "../api/PlayerApi";
 import { Shape, ShapeStyle, ShapeType } from "../types/items/Shape";
 import { GenericItemBuilder } from "./GenericItemBuilder";
 
@@ -7,8 +8,8 @@ export class ShapeBuilder extends GenericItemBuilder<ShapeBuilder> {
   private _shapeType: ShapeType;
   private _style: ShapeStyle;
 
-  constructor() {
-    super();
+  constructor(player: PlayerApi) {
+    super(player);
     this._width = 0;
     this._height = 0;
     this._shapeType = "RECTANGLE";

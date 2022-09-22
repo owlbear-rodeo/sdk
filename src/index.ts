@@ -6,9 +6,24 @@ import SceneApi from "./api/scene/SceneApi";
 import ContextMenuApi from "./api/ContextMenuApi";
 import ToolApi from "./api/ToolApi";
 
-import builders from "./builders";
+import { CurveBuilder } from "./builders/CurveBuilder";
+import { ImageBuilder } from "./builders/ImageBuilder";
+import { LabelBuilder } from "./builders/LabelBuilder";
+import { LineBuilder } from "./builders/LineBuilder";
+import { PointerBuilder } from "./builders/PointerBuilder";
+import { RulerBuilder } from "./builders/RulerBuilder";
+import { ShapeBuilder } from "./builders/ShapeBuilder";
+import { TextBuilder } from "./builders/TextBuilder";
+import { ImageContent } from "./types/items/ImageContent";
+import { ImageGrid } from "./types/items/ImageGrid";
 
 const messageBus = new MessageBus("http://localhost:3000");
+const viewportApi = new ViewportApi(messageBus);
+const playerApi = new PlayerApi(messageBus);
+const notificationApi = new NotificationApi(messageBus);
+const sceneApi = new SceneApi(messageBus);
+const contextMenuApi = new ContextMenuApi(messageBus);
+const toolApi = new ToolApi(messageBus);
 
 const OBR = {
   onReady: (callback: () => void) => {
@@ -18,14 +33,55 @@ const OBR = {
     };
     messageBus.on("OBR_READY", handleReady);
   },
-  viewport: new ViewportApi(messageBus),
-  player: new PlayerApi(messageBus),
-  notification: new NotificationApi(messageBus),
-  scene: new SceneApi(messageBus),
-  contextMenu: new ContextMenuApi(messageBus),
-  tool: new ToolApi(messageBus),
+  viewport: viewportApi,
+  player: playerApi,
+  notification: notificationApi,
+  scene: sceneApi,
+  contextMenu: contextMenuApi,
+  tool: toolApi,
 };
 
-export { builders };
+function buildCurve() {
+  return new CurveBuilder(playerApi);
+}
+
+function buildImage(image: ImageContent, grid: ImageGrid) {
+  return new ImageBuilder(playerApi, image, grid);
+}
+
+function buildLabel() {
+  return new LabelBuilder(playerApi);
+}
+
+function buildLine() {
+  return new LineBuilder(playerApi);
+}
+
+function buildPointer() {
+  return new PointerBuilder(playerApi);
+}
+
+function buildRuler() {
+  return new RulerBuilder(playerApi);
+}
+
+function buildShape() {
+  return new ShapeBuilder(playerApi);
+}
+
+function buildText() {
+  return new TextBuilder(playerApi);
+}
+
+export {
+  buildCurve,
+  buildImage,
+  buildLabel,
+  buildLine,
+  buildPointer,
+  buildRuler,
+  buildShape,
+  buildText,
+};
 
 export default OBR;

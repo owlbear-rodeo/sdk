@@ -3,6 +3,7 @@ import { ImageGrid } from "../types/items/ImageGrid";
 import { TextContent, TextItemType } from "../types/items/TextContent";
 import { Image } from "../types/items/Image";
 import { GenericItemBuilder } from "./GenericItemBuilder";
+import PlayerApi from "../api/PlayerApi";
 
 export class ImageBuilder extends GenericItemBuilder<ImageBuilder> {
   private _image: ImageContent;
@@ -10,8 +11,8 @@ export class ImageBuilder extends GenericItemBuilder<ImageBuilder> {
   private _text: TextContent;
   private _textItemType: TextItemType;
 
-  constructor(image: ImageContent, grid: ImageGrid) {
-    super();
+  constructor(player: PlayerApi, image: ImageContent, grid: ImageGrid) {
+    super(player);
     this._image = image;
     this._grid = grid;
     this._item.name = "Image";

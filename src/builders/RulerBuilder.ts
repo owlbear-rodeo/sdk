@@ -1,3 +1,4 @@
+import PlayerApi from "../api/PlayerApi";
 import { Ruler, RulerStyle, RulerVariant } from "../types/items/Ruler";
 import { Vector2 } from "../types/Vector2";
 import { GenericItemBuilder } from "./GenericItemBuilder";
@@ -8,8 +9,8 @@ export class RulerBuilder extends GenericItemBuilder<RulerBuilder> {
   private _measurement: string;
   private _style: RulerStyle;
 
-  constructor() {
-    super();
+  constructor(player: PlayerApi) {
+    super(player);
     this._startPosition = { x: 0, y: 0 };
     this._endPosition = { x: 0, y: 0 };
     this._measurement = "";

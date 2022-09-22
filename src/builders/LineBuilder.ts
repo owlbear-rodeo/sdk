@@ -1,3 +1,4 @@
+import PlayerApi from "../api/PlayerApi";
 import { Line, LineStyle } from "../types/items/Line";
 import { Vector2 } from "../types/Vector2";
 import { GenericItemBuilder } from "./GenericItemBuilder";
@@ -7,8 +8,8 @@ export class LineBuilder extends GenericItemBuilder<LineBuilder> {
   private _startPosition: Vector2;
   private _endPosition: Vector2;
 
-  constructor() {
-    super();
+  constructor(player: PlayerApi) {
+    super(player);
     this._style = {
       strokeColor: "black",
       strokeOpacity: 1,

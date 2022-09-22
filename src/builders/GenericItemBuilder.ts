@@ -1,4 +1,5 @@
 import { v4 as uuid } from "uuid";
+import PlayerApi from "../api/PlayerApi";
 import { Item, Layer } from "../types/items/Item";
 import { Metadata } from "../types/Metatdata";
 import { Vector2 } from "../types/Vector2";
@@ -6,15 +7,14 @@ import { Vector2 } from "../types/Vector2";
 export abstract class GenericItemBuilder<B extends GenericItemBuilder<B>> {
   protected _item: Item;
 
-  constructor() {
+  constructor(player: PlayerApi) {
     this._item = {
-      // TODO: UserId
-      createdUserId: uuid(),
+      createdUserId: player.id,
       id: uuid(),
       name: "Item",
       zIndex: Date.now(),
       lastModified: new Date().toISOString(),
-      lastModifiedUserId: uuid(),
+      lastModifiedUserId: player.id,
       locked: false,
       metadata: {},
       position: { x: 0, y: 0 },

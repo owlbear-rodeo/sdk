@@ -1,3 +1,4 @@
+import PlayerApi from "../api/PlayerApi";
 import { Label, LabelStyle } from "../types/items/Label";
 import { RichText, TextContent, TextSize } from "../types/items/TextContent";
 import { GenericItemBuilder } from "./GenericItemBuilder";
@@ -6,8 +7,8 @@ export class LabelBuilder extends GenericItemBuilder<LabelBuilder> {
   private _text: TextContent;
   private _style: LabelStyle;
 
-  constructor() {
-    super();
+  constructor(player: PlayerApi) {
+    super(player);
     this._text = {
       richText: [
         {

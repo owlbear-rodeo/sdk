@@ -1,12 +1,13 @@
 import { RichText, TextContent, TextSize } from "../types/items/TextContent";
 import { Text } from "../types/items/Text";
 import { GenericItemBuilder } from "./GenericItemBuilder";
+import PlayerApi from "../api/PlayerApi";
 
 export class TextBuilder extends GenericItemBuilder<TextBuilder> {
   private _text: TextContent;
 
-  constructor() {
-    super();
+  constructor(player: PlayerApi) {
+    super(player);
     this._text = {
       richText: [
         {

@@ -1,3 +1,4 @@
+import PlayerApi from "../api/PlayerApi";
 import { Curve, CurveStyle } from "../types/items/Curve";
 import { Vector2 } from "../types/Vector2";
 import { GenericItemBuilder } from "./GenericItemBuilder";
@@ -6,8 +7,8 @@ export class CurveBuilder extends GenericItemBuilder<CurveBuilder> {
   private _points: Vector2[];
   private _style: CurveStyle;
 
-  constructor() {
-    super();
+  constructor(player: PlayerApi) {
+    super(player);
     this._points = [];
     this._style = {
       fillColor: "black",

@@ -1,3 +1,4 @@
+import PlayerApi from "../api/PlayerApi";
 import { Pointer } from "../types/items/Pointer";
 import { GenericItemBuilder } from "./GenericItemBuilder";
 
@@ -5,8 +6,8 @@ export class PointerBuilder extends GenericItemBuilder<PointerBuilder> {
   private _color: string;
   private _radius: number;
 
-  constructor() {
-    super();
+  constructor(player: PlayerApi) {
+    super(player);
     this._color = "black";
     this._radius = 20;
     this._item.layer = "POINTER";
