@@ -3,9 +3,11 @@ import { Permissions } from "../types/Permissions";
 
 class PlayerApi {
   private messageBus: MessageBus;
+  id: string;
 
   constructor(messageBus: MessageBus) {
     this.messageBus = messageBus;
+    this.id = "";
   }
 
   async getSelection(): Promise<string[] | undefined> {

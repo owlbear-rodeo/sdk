@@ -12,7 +12,11 @@ const messageBus = new MessageBus("http://localhost:3000");
 
 const OBR = {
   onReady: (callback: () => void) => {
-    messageBus.on("OBR_READY", callback);
+    const handleReady = (data: { userId: string }) => {
+      playerApi.id = data.userId;
+      callback();
+    };
+    messageBus.on("OBR_READY", handleReady);
   },
   viewport: new ViewportApi(messageBus),
   player: new PlayerApi(messageBus),
