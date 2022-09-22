@@ -50,6 +50,7 @@ export interface ToolCursor {
 }
 
 export interface ToolAction {
+  id: string;
   icons: ToolIcon[];
   disabled?: ToolFilter;
   onClick?: (context: ToolContext, elementId: string) => void;
@@ -57,6 +58,7 @@ export interface ToolAction {
 }
 
 export interface ToolMode {
+  id: string;
   icons: ToolIcon[];
   disabled?: ToolFilter;
   cursors?: ToolCursor[];
@@ -86,6 +88,7 @@ export interface ToolMode {
 }
 
 export interface Tool {
+  id: string;
   icons: ToolIcon[];
   disabled?: ToolFilter;
   onClick?: (

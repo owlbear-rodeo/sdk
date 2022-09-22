@@ -21,15 +21,14 @@ class ContextMenuApi {
     }
   };
 
-  async create(contextMenu: ContextMenuItem): Promise<string> {
-    const { id } = await this.messageBus.sendAsync<{ id: string }>(
-      "OBR_CONTEXT_MENU_CREATE",
-      { shortcut: contextMenu.shortcut, icons: contextMenu.icons },
-    );
+  async create(contextMenu: ContextMenuItem): Promise<void> {
+    this.messageBus.sendAsync("OBR_CONTEXT_MENU_CREATE", {
+      id: contextMenu.id,
+      shortcut: contextMenu.shortcut,
+      icons: contextMenu.icons,
+    });
 
-    this.contextMenus[id] = contextMenu;
-
-    return id;
+    this.contextMenus[contextMenu.id] = contextMenu;
   }
 
   async remove(id: string): Promise<void> {

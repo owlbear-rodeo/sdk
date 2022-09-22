@@ -23,6 +23,7 @@ export interface ContextMenuIcon {
 }
 
 export interface ContextMenuItem {
+  id: string;
   icons: ContextMenuIcon[];
   onClick: (context: ContextMenuContext, elementId: string) => void;
   shortcut?: string;

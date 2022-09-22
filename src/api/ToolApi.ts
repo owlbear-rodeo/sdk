@@ -205,21 +205,17 @@ class ToolApi {
     }
   };
 
-  async create(tool: Tool): Promise<string> {
-    const { id } = await this.messageBus.sendAsync<{ id: string }>(
-      "OBR_TOOL_CREATE",
-      {
-        shortcut: tool.shortcut,
-        defaultMode: tool.defaultMode,
-        defaultMetadata: tool.defaultMetadata,
-        icons: tool.icons,
-        disabled: tool.disabled,
-      },
-    );
+  async create(tool: Tool): Promise<void> {
+    await this.messageBus.sendAsync("OBR_TOOL_CREATE", {
+      id: tool.id,
+      shortcut: tool.shortcut,
+      defaultMode: tool.defaultMode,
+      defaultMetadata: tool.defaultMetadata,
+      icons: tool.icons,
+      disabled: tool.disabled,
+    });
 
-    this.tools[id] = tool;
-
-    return id;
+    this.tools[tool.id] = tool;
   }
 
   async remove(id: string): Promise<void> {
@@ -231,19 +227,15 @@ class ToolApi {
     await this.messageBus.sendAsync("OBR_TOOL_ACTIVATE", { id });
   }
 
-  async createAction(action: ToolAction): Promise<string> {
-    const { id } = await this.messageBus.sendAsync<{ id: string }>(
-      "OBR_TOOL_ACTION_CREATE",
-      {
-        shortcut: action.shortcut,
-        icons: action.icons,
-        disabled: action.disabled,
-      },
-    );
+  async createAction(action: ToolAction): Promise<void> {
+    await this.messageBus.sendAsync("OBR_TOOL_ACTION_CREATE", {
+      id: action.id,
+      shortcut: action.shortcut,
+      icons: action.icons,
+      disabled: action.disabled,
+    });
 
-    this.toolActions[id] = action;
-
-    return id;
+    this.toolActions[action.id] = action;
   }
 
   async removeAction(id: string): Promise<void> {
@@ -251,20 +243,16 @@ class ToolApi {
     delete this.tools[id];
   }
 
-  async createMode(mode: ToolMode): Promise<string> {
-    const { id } = await this.messageBus.sendAsync<{ id: string }>(
-      "OBR_TOOL_MODE_CREATE",
-      {
-        shortcut: mode.shortcut,
-        icons: mode.icons,
-        disabled: mode.disabled,
-        cursors: mode.cursors,
-      },
-    );
+  async createMode(mode: ToolMode): Promise<void> {
+    await this.messageBus.sendAsync("OBR_TOOL_MODE_CREATE", {
+      id: mode.id,
+      shortcut: mode.shortcut,
+      icons: mode.icons,
+      disabled: mode.disabled,
+      cursors: mode.cursors,
+    });
 
-    this.toolModes[id] = mode;
-
-    return id;
+    this.toolModes[mode.id] = mode;
   }
 
   async removeMode(id: string): Promise<void> {
