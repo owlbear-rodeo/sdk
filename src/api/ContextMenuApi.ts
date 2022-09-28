@@ -1,3 +1,4 @@
+import { normalizeIconPaths } from "../common/normalizeIconPaths";
 import MessageBus from "../messages/MessageBus";
 import { ContextMenuContext, ContextMenuItem } from "../types/ContextMenu";
 
@@ -25,7 +26,7 @@ class ContextMenuApi {
     this.messageBus.sendAsync("OBR_CONTEXT_MENU_CREATE", {
       id: contextMenu.id,
       shortcut: contextMenu.shortcut,
-      icons: contextMenu.icons,
+      icons: normalizeIconPaths(contextMenu.icons),
     });
 
     this.contextMenus[contextMenu.id] = contextMenu;

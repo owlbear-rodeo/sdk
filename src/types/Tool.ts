@@ -35,7 +35,7 @@ export interface ToolFilter {
 }
 
 export interface ToolIcon {
-  svgIcon: string;
+  icon: string;
   label: string;
   filter?: ToolFilter;
 }

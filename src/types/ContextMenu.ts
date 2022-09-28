@@ -17,7 +17,7 @@ export interface ContextMenuIconFilter {
 }
 
 export interface ContextMenuIcon {
-  svgIcon: string;
+  icon: string;
   label: string;
   filter?: ContextMenuIconFilter;
 }

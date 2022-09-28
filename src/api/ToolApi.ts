@@ -1,3 +1,4 @@
+import { normalizeIconPaths } from "../common/normalizeIconPaths";
 import MessageBus from "../messages/MessageBus";
 import {
   Tool,
@@ -211,7 +212,7 @@ class ToolApi {
       shortcut: tool.shortcut,
       defaultMode: tool.defaultMode,
       defaultMetadata: tool.defaultMetadata,
-      icons: tool.icons,
+      icons: normalizeIconPaths(tool.icons),
       disabled: tool.disabled,
     });
 
@@ -231,7 +232,7 @@ class ToolApi {
     await this.messageBus.sendAsync("OBR_TOOL_ACTION_CREATE", {
       id: action.id,
       shortcut: action.shortcut,
-      icons: action.icons,
+      icons: normalizeIconPaths(action.icons),
       disabled: action.disabled,
     });
 
@@ -247,7 +248,7 @@ class ToolApi {
     await this.messageBus.sendAsync("OBR_TOOL_MODE_CREATE", {
       id: mode.id,
       shortcut: mode.shortcut,
-      icons: mode.icons,
+      icons: normalizeIconPaths(mode.icons),
       disabled: mode.disabled,
       cursors: mode.cursors,
     });
