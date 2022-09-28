@@ -3,11 +3,17 @@ import { Permissions } from "../types/Permissions";
 
 class PlayerApi {
   private messageBus: MessageBus;
-  id: string;
 
   constructor(messageBus: MessageBus) {
     this.messageBus = messageBus;
-    this.id = "";
+  }
+
+  get id() {
+    // Get the user id from the message bus which will be populated once OBR_READY is handled
+    if (!this.messageBus.userId) {
+      throw Error("Unable to get user ID: not ready");
+    }
+    return this.messageBus.userId;
   }
 
   async getSelection(): Promise<string[] | undefined> {

@@ -2,6 +2,11 @@ import { isMessage } from "./Message";
 import { EventEmitter } from "events";
 
 class MessageBus extends EventEmitter {
+  ready: boolean = false;
+  /** The user ID of the player using this extension */
+  userId: string | null = null;
+  /** A reference ID used to get responses from the target  */
+  private ref: string | null = null;
   private targetOrigin: string;
 
   constructor(origin: string) {
@@ -18,16 +23,28 @@ class MessageBus extends EventEmitter {
 
   private handleMessage = (event: MessageEvent<unknown>) => {
     const message = event.data;
-    if (isMessage(message)) {
+    // Ensure the message is meant for us and check that it is formatted correctly
+    if (event.origin === this.targetOrigin && isMessage(message)) {
+      // Handle the ready event
+      if (message.id === "OBR_READY") {
+        this.ready = true;
+        const data = message.data as { userId: string; ref: string };
+        this.ref = data.ref;
+        this.userId = data.userId;
+      }
       this.emit(message.id, message.data);
     }
   };
 
   send = (id: string, data: unknown) => {
+    if (!this.ref) {
+      throw Error("Unable to send message: not ready");
+    }
     window.top?.postMessage(
       {
         id,
         data,
+        ref: this.ref,
       },
       this.targetOrigin,
     );

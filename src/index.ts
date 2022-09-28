@@ -27,11 +27,12 @@ const toolApi = new ToolApi(messageBus);
 
 const OBR = {
   onReady: (callback: () => void) => {
-    const handleReady = (data: { userId: string }) => {
-      playerApi.id = data.userId;
+    // If we're already ready then callback immediately
+    if (messageBus.ready) {
       callback();
-    };
-    messageBus.on("OBR_READY", handleReady);
+    } else {
+      messageBus.once("OBR_READY", () => callback());
+    }
   },
   viewport: viewportApi,
   player: playerApi,
