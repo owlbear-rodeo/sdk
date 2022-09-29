@@ -31,7 +31,7 @@ export interface ToolFilter {
   activeModes?: string[];
   permissions?: Permissions;
   roles?: ("GM" | "PLAYER")[];
-  metadata?: KeyFilter<Metadata>[];
+  metadata?: KeyFilter[];
 }
 
 export interface ToolIcon {
@@ -41,7 +41,7 @@ export interface ToolIcon {
 }
 
 export interface ToolCursorFilter extends ToolFilter {
-  target?: KeyFilter<Item>[];
+  target?: KeyFilter[];
 }
 
 export interface ToolCursor {

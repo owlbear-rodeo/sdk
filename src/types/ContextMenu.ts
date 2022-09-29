@@ -12,8 +12,8 @@ export interface ContextMenuIconFilter {
   max?: number;
   permissions?: ("EDIT" | "DELETE" | "CREATE")[];
   roles?: ("GM" | "PLAYER")[];
-  every?: KeyFilter<Item>[];
-  some?: KeyFilter<Item>[];
+  every?: KeyFilter[];
+  some?: KeyFilter[];
 }
 
 export interface ContextMenuIcon {

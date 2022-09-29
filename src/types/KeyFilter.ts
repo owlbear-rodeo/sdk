@@ -1,6 +1,6 @@
-export interface KeyFilter<T> {
-  key: keyof T;
-  value: T[keyof T];
+export interface KeyFilter {
+  key: string;
+  value: unknown;
   operator?: "==" | "!=";
   coordinator?: "&&" | "||";
 }
