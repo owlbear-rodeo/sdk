@@ -1,5 +1,6 @@
 import MessageBus from "../../messages/MessageBus";
 import {
+  Grid,
   GridColor,
   GridLineType,
   GridMeasurement,
@@ -118,6 +119,16 @@ class SceneGridApi {
       { from, to },
     );
     return distance;
+  }
+
+  onChange(callback: (grid: Grid) => void) {
+    const handleChange = (data: { grid: Grid }) => {
+      callback(data.grid);
+    };
+    this.messageBus.on("OBR_SCENE_GRID_EVENT_CHANGE", handleChange);
+    return () => {
+      this.messageBus.off("OBR_SCENE_GRID_EVENT_CHANGE", handleChange);
+    };
   }
 }
 

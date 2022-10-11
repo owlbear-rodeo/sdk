@@ -1,4 +1,5 @@
 import MessageBus from "../../messages/MessageBus";
+import { Fog } from "../../types/Fog";
 
 class SceneFogApi {
   private messageBus: MessageBus;
@@ -29,6 +30,16 @@ class SceneFogApi {
 
   async setFilled(filled: boolean): Promise<void> {
     await this.messageBus.sendAsync("OBR_SCENE_FOG_SET_FILLED", { filled });
+  }
+
+  onChange(callback: (fog: Fog) => void) {
+    const handleChange = (data: { fog: Fog }) => {
+      callback(data.fog);
+    };
+    this.messageBus.on("OBR_SCENE_FOG_EVENT_CHANGE", handleChange);
+    return () => {
+      this.messageBus.off("OBR_SCENE_FOG_EVENT_CHANGE", handleChange);
+    };
   }
 }
 

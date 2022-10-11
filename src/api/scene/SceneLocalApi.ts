@@ -74,6 +74,16 @@ class SceneLocalApi {
     );
     return items;
   }
+
+  onChange(callback: (items: Item[]) => void) {
+    const handleChange = (data: { items: Item[] }) => {
+      callback(data.items);
+    };
+    this.messageBus.on("OBR_SCENE_LOCAL_EVENT_CHANGE", handleChange);
+    return () => {
+      this.messageBus.off("OBR_SCENE_LOCAL_EVENT_CHANGE", handleChange);
+    };
+  }
 }
 
 export default SceneLocalApi;

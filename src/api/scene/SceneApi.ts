@@ -30,6 +30,16 @@ class SceneApi {
     );
     return ready;
   }
+
+  onReadyChange(callback: (ready: boolean) => void) {
+    const handleChange = (data: { ready: boolean }) => {
+      callback(data.ready);
+    };
+    this.messageBus.on("OBR_SCENE_EVENT_READY_CHANGE", handleChange);
+    return () => {
+      this.messageBus.off("OBR_SCENE_EVENT_READY_CHANGE", handleChange);
+    };
+  }
 }
 
 export default SceneApi;
