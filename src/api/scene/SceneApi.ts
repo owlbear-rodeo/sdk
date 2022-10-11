@@ -3,6 +3,7 @@ import SceneFogApi from "./SceneFogApi";
 import SceneGridApi from "./SceneGridApi";
 import SceneHistoryApi from "./SceneHistoryApi";
 import SceneItemsApi from "./SceneItemsApi";
+import SceneLocalApi from "./SceneLocalApi";
 
 class SceneApi {
   private messageBus: MessageBus;
@@ -11,6 +12,7 @@ class SceneApi {
   fog: SceneFogApi;
   history: SceneHistoryApi;
   items: SceneItemsApi;
+  local: SceneLocalApi;
 
   constructor(messageBus: MessageBus) {
     this.messageBus = messageBus;
@@ -18,6 +20,7 @@ class SceneApi {
     this.fog = new SceneFogApi(messageBus);
     this.history = new SceneHistoryApi(messageBus);
     this.items = new SceneItemsApi(messageBus);
+    this.local = new SceneLocalApi(messageBus);
   }
 
   async isReady(): Promise<boolean> {
