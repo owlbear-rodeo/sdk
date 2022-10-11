@@ -5,6 +5,7 @@ import NotificationApi from "./api/NotificationApi";
 import SceneApi from "./api/scene/SceneApi";
 import ContextMenuApi from "./api/ContextMenuApi";
 import ToolApi from "./api/ToolApi";
+import PopoverApi from "./api/PopoverApi";
 
 import { CurveBuilder } from "./builders/CurveBuilder";
 import { ImageBuilder } from "./builders/ImageBuilder";
@@ -24,6 +25,7 @@ const notificationApi = new NotificationApi(messageBus);
 const sceneApi = new SceneApi(messageBus);
 const contextMenuApi = new ContextMenuApi(messageBus);
 const toolApi = new ToolApi(messageBus);
+const popoverApi = new PopoverApi(messageBus);
 
 const OBR = {
   onReady: (callback: () => void) => {
@@ -40,6 +42,7 @@ const OBR = {
   scene: sceneApi,
   contextMenu: contextMenuApi,
   tool: toolApi,
+  popover: popoverApi,
 };
 
 function buildCurve() {
