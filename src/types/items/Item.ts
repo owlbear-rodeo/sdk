@@ -33,4 +33,5 @@ export interface Item {
   metadata: Metadata;
   layer: Layer;
   attachedTo?: string;
+  disableHit?: boolean;
 }

@@ -95,6 +95,11 @@ export abstract class GenericItemBuilder<B extends GenericItemBuilder<B>> {
     return this.self();
   }
 
+  disableHit(disable: boolean): B {
+    this._item.disableHit = disable;
+    return this.self();
+  }
+
   protected self(): B {
     // @ts-ignore
     return this;
