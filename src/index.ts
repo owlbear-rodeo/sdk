@@ -19,6 +19,8 @@ import { TextBuilder } from "./builders/TextBuilder";
 import { ImageContent } from "./types/items/ImageContent";
 import { ImageGrid } from "./types/items/ImageGrid";
 
+export * from "./types";
+
 const messageBus = new MessageBus("http://localhost:3000");
 const viewportApi = new ViewportApi(messageBus);
 const playerApi = new PlayerApi(messageBus);
