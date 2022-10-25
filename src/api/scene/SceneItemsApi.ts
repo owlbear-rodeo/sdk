@@ -77,8 +77,10 @@ class SceneItemsApi {
     const handleChange = (data: { items: Item[] }) => {
       callback(data.items);
     };
+    this.messageBus.send("OBR_SCENE_ITEMS_SUBSCRIBE", {});
     this.messageBus.on("OBR_SCENE_ITEMS_EVENT_CHANGE", handleChange);
     return () => {
+      this.messageBus.send("OBR_SCENE_ITEMS_UNSUBSCRIBE", {});
       this.messageBus.off("OBR_SCENE_ITEMS_EVENT_CHANGE", handleChange);
     };
   }

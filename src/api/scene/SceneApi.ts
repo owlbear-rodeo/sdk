@@ -35,8 +35,10 @@ class SceneApi {
     const handleChange = (data: { ready: boolean }) => {
       callback(data.ready);
     };
+    this.messageBus.send("OBR_SCENE_READY_SUBSCRIBE", {});
     this.messageBus.on("OBR_SCENE_EVENT_READY_CHANGE", handleChange);
     return () => {
+      this.messageBus.send("OBR_SCENE_READY_UNSUBSCRIBE", {});
       this.messageBus.off("OBR_SCENE_EVENT_READY_CHANGE", handleChange);
     };
   }

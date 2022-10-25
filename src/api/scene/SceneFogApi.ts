@@ -36,8 +36,10 @@ class SceneFogApi {
     const handleChange = (data: { fog: Fog }) => {
       callback(data.fog);
     };
+    this.messageBus.send("OBR_SCENE_FOG_SUBSCRIBE", {});
     this.messageBus.on("OBR_SCENE_FOG_EVENT_CHANGE", handleChange);
     return () => {
+      this.messageBus.send("OBR_SCENE_FOG_UNSUBSCRIBE", {});
       this.messageBus.off("OBR_SCENE_FOG_EVENT_CHANGE", handleChange);
     };
   }

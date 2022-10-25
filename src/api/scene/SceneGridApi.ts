@@ -125,8 +125,10 @@ class SceneGridApi {
     const handleChange = (data: { grid: Grid }) => {
       callback(data.grid);
     };
+    this.messageBus.send("OBR_SCENE_GRID_SUBSCRIBE", {});
     this.messageBus.on("OBR_SCENE_GRID_EVENT_CHANGE", handleChange);
     return () => {
+      this.messageBus.send("OBR_SCENE_GRID_UNSUBSCRIBE", {});
       this.messageBus.off("OBR_SCENE_GRID_EVENT_CHANGE", handleChange);
     };
   }
