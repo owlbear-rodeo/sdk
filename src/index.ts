@@ -18,6 +18,7 @@ import { ShapeBuilder } from "./builders/ShapeBuilder";
 import { TextBuilder } from "./builders/TextBuilder";
 import { ImageContent } from "./types/items/ImageContent";
 import { ImageGrid } from "./types/items/ImageGrid";
+import InteractionApi from "./api/InteractionApi";
 
 export * from "./types";
 
@@ -30,6 +31,7 @@ const contextMenuApi = new ContextMenuApi(messageBus);
 const toolApi = new ToolApi(messageBus);
 const popoverApi = new PopoverApi(messageBus);
 const actionApi = new ActionApi(messageBus);
+const interactionApi = new InteractionApi(messageBus);
 
 const OBR = {
   onReady: (callback: () => void) => {
@@ -48,6 +50,7 @@ const OBR = {
   tool: toolApi,
   popover: popoverApi,
   action: actionApi,
+  interaction: interactionApi,
 };
 
 function buildCurve() {

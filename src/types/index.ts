@@ -22,3 +22,4 @@ export * from "./Popover";
 export * from "./Tool";
 export * from "./Vector2";
 export * from "./ViewportTransform";
+export * from "./Interaction";
