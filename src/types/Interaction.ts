@@ -15,10 +15,12 @@ export type UpdateInteraction<State> = (draft: Draft<State>) => void;
 export type DispatchInteractionUpdate<State> = (
   update: UpdateInteraction<State>,
 ) => State;
+export type InteractionID = string;
 
 export type InteractionManager<State> = [
   DispatchInteractionUpdate<State>,
   StopInteraction,
+  InteractionID,
 ];
 
 export type ItemInteractionManager = InteractionManager<ItemInteraction>;

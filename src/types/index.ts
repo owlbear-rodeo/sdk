@@ -23,3 +23,4 @@ export * from "./Tool";
 export * from "./Vector2";
 export * from "./ViewportTransform";
 export * from "./Interaction";
+export * from "./ObjectOrArray";
