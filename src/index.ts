@@ -19,12 +19,14 @@ import { TextBuilder } from "./builders/TextBuilder";
 import { ImageContent } from "./types/items/ImageContent";
 import { ImageGrid } from "./types/items/ImageGrid";
 import InteractionApi from "./api/InteractionApi";
+import PartyApi from "./api/PartyApi";
 
 export * from "./types";
 
 const messageBus = new MessageBus("http://localhost:3000");
 const viewportApi = new ViewportApi(messageBus);
 const playerApi = new PlayerApi(messageBus);
+const partyApi = new PartyApi(messageBus);
 const notificationApi = new NotificationApi(messageBus);
 const sceneApi = new SceneApi(messageBus);
 const contextMenuApi = new ContextMenuApi(messageBus);
@@ -44,6 +46,7 @@ const OBR = {
   },
   viewport: viewportApi,
   player: playerApi,
+  party: partyApi,
   notification: notificationApi,
   scene: sceneApi,
   contextMenu: contextMenuApi,
