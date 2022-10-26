@@ -1,4 +1,5 @@
 import MessageBus from "../messages/MessageBus";
+import { Metadata } from "../types/Metatdata";
 import { Permissions } from "../types/Permissions";
 
 class PlayerApi {
@@ -81,6 +82,17 @@ class PlayerApi {
       {},
     );
     return role;
+  }
+
+  async getMetadata(): Promise<Metadata> {
+    const { metadata } = await this.messageBus.sendAsync<{
+      metadata: Metadata;
+    }>("OBR_PLAYER_GET_METADATA", {});
+    return metadata;
+  }
+
+  async setMetadata(key: string, value: unknown): Promise<void> {
+    await this.messageBus.sendAsync("OBR_PLAYER_SET_METADATA", { key, value });
   }
 
   async getPermissions(): Promise<Permissions> {

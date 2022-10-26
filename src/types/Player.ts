@@ -1,3 +1,5 @@
+import { Metadata } from "./Metatdata";
+
 export interface Player {
   id: string;
   connectionId: string;
@@ -6,4 +8,5 @@ export interface Player {
   name: string;
   color: string;
   syncView: boolean;
+  metadata: Metadata;
 }
