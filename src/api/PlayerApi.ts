@@ -101,6 +101,13 @@ class PlayerApi {
     }>("OBR_PLAYER_GET_PERMISSIONS", {});
     return permissions;
   }
+
+  async getConnectionId(): Promise<string> {
+    const { connectionId } = await this.messageBus.sendAsync<{
+      connectionId: string;
+    }>("OBR_PLAYER_GET_CONNECTION_ID", {});
+    return connectionId;
+  }
 }
 
 export default PlayerApi;
