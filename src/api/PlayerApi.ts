@@ -91,8 +91,8 @@ class PlayerApi {
     return metadata;
   }
 
-  async setMetadata(key: string, value: unknown): Promise<void> {
-    await this.messageBus.sendAsync("OBR_PLAYER_SET_METADATA", { key, value });
+  async setMetadata(update: Partial<Metadata>): Promise<void> {
+    await this.messageBus.sendAsync("OBR_PLAYER_SET_METADATA", { update });
   }
 
   async getPermissions(): Promise<Permissions> {
