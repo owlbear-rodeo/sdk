@@ -1,5 +1,5 @@
 export interface KeyFilter {
-  key: string;
+  key: string | string[];
   value: unknown;
   operator?: "==" | "!=";
   coordinator?: "&&" | "||";
