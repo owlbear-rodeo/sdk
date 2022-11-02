@@ -34,4 +34,5 @@ export interface Item {
   layer: Layer;
   attachedTo?: string;
   disableHit?: boolean;
+  disableAutoZIndex?: boolean;
 }

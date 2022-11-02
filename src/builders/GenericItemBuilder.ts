@@ -100,6 +100,11 @@ export abstract class GenericItemBuilder<B extends GenericItemBuilder<B>> {
     return this.self();
   }
 
+  disableAutoZIndex(disable: boolean): B {
+    this._item.disableAutoZIndex = disable;
+    return this.self();
+  }
+
   protected self(): B {
     // @ts-ignore
     return this;
