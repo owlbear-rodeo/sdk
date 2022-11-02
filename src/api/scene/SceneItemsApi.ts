@@ -31,11 +31,22 @@ class SceneItemsApi {
     }
   }
 
+  private isItemArray(value: any): value is Item[] {
+    return (
+      Array.isArray(value) && value.every((item) => typeof item !== "string")
+    );
+  }
+
   async updateItems<ItemType extends Item>(
-    filter: ItemFilter<ItemType>,
+    filterOrItems: ItemFilter<ItemType> | ItemType[],
     update: (draft: WritableDraft<ItemType[]>) => void,
   ) {
-    const items = await this.getItems(filter);
+    let items: ItemType[];
+    if (this.isItemArray(filterOrItems)) {
+      items = filterOrItems;
+    } else {
+      items = await this.getItems(filterOrItems);
+    }
     const [nextState, patches] = produceWithPatches(items, update);
     const updates: Record<string, any>[] = nextState.map((item) => ({
       id: item.id,
