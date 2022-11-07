@@ -16,7 +16,7 @@ export * from "./Fog";
 export * from "./Grid";
 export * from "./ItemFilter";
 export * from "./KeyFilter";
-export * from "./Metatdata";
+export * from "./Metadata";
 export * from "./Permissions";
 export * from "./Popover";
 export * from "./Tool";

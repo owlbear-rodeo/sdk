@@ -1,6 +1,6 @@
 import { Item } from "./items/Item";
 import { KeyFilter } from "./KeyFilter";
-import { Metadata } from "./Metatdata";
+import { Metadata } from "./Metadata";
 import { Vector2 } from "./Vector2";
 
 export interface ToolContext {

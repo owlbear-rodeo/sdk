@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 import PlayerApi from "../api/PlayerApi";
 import { Item, Layer } from "../types/items/Item";
-import { Metadata } from "../types/Metatdata";
+import { Metadata } from "../types/Metadata";
 import { Vector2 } from "../types/Vector2";
 
 export abstract class GenericItemBuilder<B extends GenericItemBuilder<B>> {

@@ -1,4 +1,4 @@
-import { Metadata } from "../Metatdata";
+import { Metadata } from "../Metadata";
 import { Vector2 } from "../Vector2";
 
 export type Layer =

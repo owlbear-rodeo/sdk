@@ -1,5 +1,5 @@
 import MessageBus from "../messages/MessageBus";
-import { Metadata } from "../types/Metatdata";
+import { Metadata } from "../types/Metadata";
 import { Permissions } from "../types/Permissions";
 
 class PlayerApi {
