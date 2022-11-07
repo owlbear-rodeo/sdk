@@ -39,7 +39,7 @@ class InteractionApi {
       this.messageBus.send("OBR_INTERACTION_STOP_ITEM_INTERACTION", { id });
     };
 
-    return [dispatcher, stop, id];
+    return [dispatcher, stop];
   }
 }
 
