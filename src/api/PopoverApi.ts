@@ -1,3 +1,4 @@
+import { normalizeUrlObject } from "../common/normalize";
 import MessageBus from "../messages/MessageBus";
 import { Popover } from "../types/Popover";
 
@@ -11,7 +12,7 @@ class PopoverApi {
   async open(popover: Popover): Promise<string> {
     const { id } = await this.messageBus.sendAsync<{ id: string }>(
       "OBR_POPOVER_OPEN",
-      { ...popover },
+      { ...normalizeUrlObject(popover) },
     );
     return id;
   }

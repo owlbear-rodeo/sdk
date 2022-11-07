@@ -1,4 +1,4 @@
-import { normalizeIconPaths } from "../common/normalizeIconPaths";
+import { normalizeIconPaths } from "../common/normalize";
 import MessageBus from "../messages/MessageBus";
 
 class ActionApi {
