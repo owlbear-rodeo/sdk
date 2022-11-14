@@ -10,6 +10,7 @@ export * from "./items/Ruler";
 export * from "./items/Shape";
 export * from "./items/Text";
 export * from "./items/TextContent";
+export * from "./items/Path";
 export * from "./BoundingBox";
 export * from "./ContextMenu";
 export * from "./Fog";

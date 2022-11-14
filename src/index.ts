@@ -16,6 +16,7 @@ import { PointerBuilder } from "./builders/PointerBuilder";
 import { RulerBuilder } from "./builders/RulerBuilder";
 import { ShapeBuilder } from "./builders/ShapeBuilder";
 import { TextBuilder } from "./builders/TextBuilder";
+import { PathBuilder } from "./builders/PathBuilder";
 import { ImageContent } from "./types/items/ImageContent";
 import { ImageGrid } from "./types/items/ImageGrid";
 import InteractionApi from "./api/InteractionApi";
@@ -88,6 +89,10 @@ function buildText() {
   return new TextBuilder(playerApi);
 }
 
+function buildPath() {
+  return new PathBuilder(playerApi);
+}
+
 export {
   buildCurve,
   buildImage,
@@ -97,6 +102,7 @@ export {
   buildRuler,
   buildShape,
   buildText,
+  buildPath,
 };
 
 export default OBR;
