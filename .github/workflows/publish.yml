@@ -10,13 +10,13 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: "16.x"
           scope: "@owlbear-rodeo"
           registry-url: "https://registry.npmjs.org"
-      - run: npm ci
-      - run: npm publish
+      - run: yarn install --frozen-lockfile
+      - run: yarn publish --access restricted
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
