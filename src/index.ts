@@ -24,7 +24,10 @@ import PartyApi from "./api/PartyApi";
 
 export * from "./types";
 
-const messageBus = new MessageBus("http://localhost:3000");
+const urlSearchParams = new URLSearchParams(window.location.search);
+const origin = urlSearchParams.get("obr_origin") || "https://www.owlbear.app";
+
+const messageBus = new MessageBus(origin);
 const viewportApi = new ViewportApi(messageBus);
 const playerApi = new PlayerApi(messageBus);
 const partyApi = new PartyApi(messageBus);
