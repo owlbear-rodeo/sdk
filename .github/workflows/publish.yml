@@ -17,6 +17,7 @@ jobs:
           scope: "@owlbear-rodeo"
           registry-url: "https://registry.npmjs.org"
       - run: yarn install --frozen-lockfile
+      - run: yarn build
       - run: yarn publish --access restricted
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
