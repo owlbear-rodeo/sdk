@@ -68,6 +68,11 @@ export class CurveBuilder extends GenericItemBuilder<CurveBuilder> {
     return this.self();
   }
 
+  closed(closed: boolean): CurveBuilder {
+    this._style.closed = closed;
+    return this.self();
+  }
+
   build(): Curve {
     return {
       ...this._item,
