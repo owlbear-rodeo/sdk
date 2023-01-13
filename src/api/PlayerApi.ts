@@ -102,6 +102,13 @@ class PlayerApi {
     return restrictions;
   }
 
+  async hasPermission(permission: Restriction): Promise<boolean> {
+    const { restrictions } = await this.messageBus.sendAsync<{
+      restrictions: Restriction[];
+    }>("OBR_PLAYER_GET_RESTRICTIONS", {});
+    return restrictions.indexOf(permission) === -1;
+  }
+
   async getConnectionId(): Promise<string> {
     const { connectionId } = await this.messageBus.sendAsync<{
       connectionId: string;
