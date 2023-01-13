@@ -1,6 +1,7 @@
 import { Item } from "./items/Item";
 import { KeyFilter } from "./KeyFilter";
 import { Metadata } from "./Metadata";
+import { Restriction } from "./Restriction";
 import { Vector2 } from "./Vector2";
 
 export interface ToolContext {
@@ -15,21 +16,10 @@ export type ToolEvent = {
   transformer?: boolean;
 };
 
-type PermissionFilter = ("EDIT" | "DELETE" | "CREATE")[];
-
-type Permissions = {
-  fog?: PermissionFilter;
-  images?: PermissionFilter;
-  drawing?: PermissionFilter;
-  ruler?: PermissionFilter;
-  pointer?: PermissionFilter;
-  text?: PermissionFilter;
-};
-
 export interface ToolFilter {
   activeTools?: string[];
   activeModes?: string[];
-  permissions?: Permissions;
+  permissions?: Restriction[];
   roles?: ("GM" | "PLAYER")[];
   metadata?: KeyFilter[];
 }
