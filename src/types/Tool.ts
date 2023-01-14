@@ -1,7 +1,7 @@
 import { Item } from "./items/Item";
 import { KeyFilter } from "./KeyFilter";
 import { Metadata } from "./Metadata";
-import { Restriction } from "./Restriction";
+import { Permission } from "./Permission";
 import { Vector2 } from "./Vector2";
 
 export interface ToolContext {
@@ -19,7 +19,7 @@ export type ToolEvent = {
 export interface ToolFilter {
   activeTools?: string[];
   activeModes?: string[];
-  permissions?: Restriction[];
+  permissions?: Permission[];
   roles?: ("GM" | "PLAYER")[];
   metadata?: KeyFilter[];
 }

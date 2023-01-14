@@ -1,10 +1,11 @@
-export type Restriction =
+export type Permission =
   | "FOG_CREATE"
   | "FOG_UPDATE"
   | "FOG_DELETE"
   | "IMAGE_CREATE"
   | "IMAGE_UPDATE"
   | "IMAGE_DELETE"
+  | "IMAGE_OWNER_ONLY"
   | "DRAWING_CREATE"
   | "DRAWING_UPDATE"
   | "DRAWING_DELETE"

@@ -18,7 +18,7 @@ export * from "./Grid";
 export * from "./ItemFilter";
 export * from "./KeyFilter";
 export * from "./Metadata";
-export * from "./Restriction";
+export * from "./Permission";
 export * from "./Popover";
 export * from "./Tool";
 export * from "./Vector2";

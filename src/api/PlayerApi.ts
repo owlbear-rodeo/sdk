@@ -1,6 +1,6 @@
 import MessageBus from "../messages/MessageBus";
 import { Metadata } from "../types/Metadata";
-import { Restriction } from "../types/Restriction";
+import { Permission } from "../types/Permission";
 
 class PlayerApi {
   private messageBus: MessageBus;
@@ -95,18 +95,20 @@ class PlayerApi {
     await this.messageBus.sendAsync("OBR_PLAYER_SET_METADATA", { update });
   }
 
-  async getRestrictions(): Promise<Restriction[]> {
-    const { restrictions } = await this.messageBus.sendAsync<{
-      restrictions: Restriction[];
-    }>("OBR_PLAYER_GET_RESTRICTIONS", {});
-    return restrictions;
+  async getPermissions(): Promise<Permission[]> {
+    const { permissions } = await this.messageBus.sendAsync<{
+      permissions: Permission[];
+    }>("OBR_PLAYER_GET_PERMISSIONS", {});
+    return permissions;
   }
 
-  async hasPermission(permission: Restriction): Promise<boolean> {
-    const { restrictions } = await this.messageBus.sendAsync<{
-      restrictions: Restriction[];
-    }>("OBR_PLAYER_GET_RESTRICTIONS", {});
-    return restrictions.indexOf(permission) === -1;
+  async hasPermission(permission: Permission): Promise<boolean> {
+    const role = await this.getRole();
+    if (role === "GM") {
+      return true;
+    }
+    const permissions = await this.getPermissions();
+    return permissions.indexOf(permission) === -1;
   }
 
   async getConnectionId(): Promise<string> {
