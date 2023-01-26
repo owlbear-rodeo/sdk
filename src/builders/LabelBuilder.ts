@@ -1,6 +1,6 @@
 import PlayerApi from "../api/PlayerApi";
 import { Label, LabelStyle } from "../types/items/Label";
-import { RichText, TextContent, TextSize } from "../types/items/TextContent";
+import { TextContent, TextSize } from "../types/items/TextContent";
 import { GenericItemBuilder } from "./GenericItemBuilder";
 
 export class LabelBuilder extends GenericItemBuilder<LabelBuilder> {
@@ -59,11 +59,6 @@ export class LabelBuilder extends GenericItemBuilder<LabelBuilder> {
 
   height(height: TextSize): LabelBuilder {
     this._text.height = height;
-    return this.self();
-  }
-
-  richText(richText: RichText): LabelBuilder {
-    this._text.richText = richText;
     return this.self();
   }
 
