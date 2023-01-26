@@ -1,4 +1,9 @@
-import { RichText, TextContent, TextSize } from "../types/items/TextContent";
+import {
+  RichText,
+  TextContent,
+  TextContentType,
+  TextSize,
+} from "../types/items/TextContent";
 import { Text } from "../types/items/Text";
 import { GenericItemBuilder } from "./GenericItemBuilder";
 import PlayerApi from "../api/PlayerApi";
@@ -60,6 +65,11 @@ export class TextBuilder extends GenericItemBuilder<TextBuilder> {
 
   plainText(plainText: string): TextBuilder {
     this._text.plainText = plainText;
+    return this.self();
+  }
+
+  textType(textType: TextContentType): TextBuilder {
+    this._text.type = textType;
     return this.self();
   }
 
