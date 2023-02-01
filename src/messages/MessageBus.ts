@@ -17,7 +17,7 @@ class MessageBus extends EventEmitter {
     this.setMaxListeners(100);
   }
 
-  destory() {
+  destroy() {
     window.removeEventListener("message", this.handleMessage);
   }
 
