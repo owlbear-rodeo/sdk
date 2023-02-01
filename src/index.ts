@@ -25,9 +25,12 @@ import PartyApi from "./api/PartyApi";
 export * from "./types";
 
 const urlSearchParams = new URLSearchParams(window.location.search);
-const origin = urlSearchParams.get("obr_origin") || "https://www.owlbear.app";
+const origin = urlSearchParams.get("obr_origin");
 
-const messageBus = new MessageBus(origin);
+/** True if the current site is embedded in an instance of Owlbear Rodeo */
+export const isAvailable = Boolean(origin);
+
+const messageBus = new MessageBus(origin || "https://www.owlbear.app");
 const viewportApi = new ViewportApi(messageBus);
 const playerApi = new PlayerApi(messageBus);
 const partyApi = new PartyApi(messageBus);

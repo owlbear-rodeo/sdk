@@ -4,8 +4,8 @@ import { Vector2 } from "../Vector2";
 export type Layer =
   | "MAP"
   | "GRID"
-  | "PROP"
   | "DRAWING"
+  | "PROP"
   | "MOUNT"
   | "CHARACTER"
   | "ATTACHMENT"

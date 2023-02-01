@@ -20,6 +20,19 @@ class SceneFogApi {
     await this.messageBus.sendAsync("OBR_SCENE_FOG_SET_COLOR", { color });
   }
 
+  async getStrokeWidth(): Promise<number> {
+    const { strokeWidth } = await this.messageBus.sendAsync<{
+      strokeWidth: number;
+    }>("OBR_SCENE_FOG_GET_STROKE_WIDTH", {});
+    return strokeWidth;
+  }
+
+  async setStrokeWidth(strokeWidth: number): Promise<void> {
+    await this.messageBus.sendAsync("OBR_SCENE_FOG_SET_STROKE_WIDTH", {
+      strokeWidth,
+    });
+  }
+
   async getFilled(): Promise<boolean> {
     const { filled } = await this.messageBus.sendAsync<{ filled: boolean }>(
       "OBR_SCENE_FOG_GET_FILLED",

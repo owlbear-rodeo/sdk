@@ -1,4 +1,4 @@
-export type GridColor = "DARK" | "LIGHT";
+export type GridColor = "DARK" | "LIGHT" | "HIGHLIGHT";
 
 export interface GridScale {
   raw: string;

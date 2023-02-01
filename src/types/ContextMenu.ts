@@ -1,6 +1,7 @@
 import { BoundingBox } from "./BoundingBox";
 import { KeyFilter } from "./KeyFilter";
 import { Item } from "./items/Item";
+import { Permission } from "./Permission";
 
 export interface ContextMenuContext {
   items: Item[];
@@ -10,7 +11,7 @@ export interface ContextMenuContext {
 export interface ContextMenuIconFilter {
   min?: number;
   max?: number;
-  permissions?: ("EDIT" | "DELETE" | "CREATE")[];
+  permissions?: ("CREATE" | "UPDATE" | "DELETE" | Permission)[];
   roles?: ("GM" | "PLAYER")[];
   every?: KeyFilter[];
   some?: KeyFilter[];

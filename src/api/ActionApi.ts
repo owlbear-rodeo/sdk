@@ -37,7 +37,7 @@ class ActionApi {
     return badgeText;
   }
 
-  async setBadgeText(badgeText: string): Promise<void> {
+  async setBadgeText(badgeText?: string): Promise<void> {
     await this.messageBus.sendAsync("OBR_ACTION_SET_BADGE_TEXT", { badgeText });
   }
 

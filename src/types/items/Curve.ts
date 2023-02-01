@@ -9,6 +9,7 @@ export interface CurveStyle {
   strokeWidth: number;
   strokeDash: number[];
   tension: number;
+  closed?: boolean;
 }
 
 export interface Curve extends Item {
