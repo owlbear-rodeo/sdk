@@ -14,7 +14,7 @@ class SceneItemsApi {
   }
 
   async getItems<ItemType extends Item>(
-    filter: ItemFilter<ItemType>,
+    filter?: ItemFilter<ItemType>,
   ): Promise<ItemType[]> {
     if (Array.isArray(filter)) {
       const { items } = await this.messageBus.sendAsync<{ items: ItemType[] }>(
@@ -22,12 +22,18 @@ class SceneItemsApi {
         { ids: filter },
       );
       return items;
-    } else {
+    } else if (filter) {
       const { items } = await this.messageBus.sendAsync<{ items: ItemType[] }>(
         "OBR_SCENE_ITEMS_GET_ALL_ITEMS",
         {},
       );
       return items.filter(filter);
+    } else {
+      const { items } = await this.messageBus.sendAsync<{ items: ItemType[] }>(
+        "OBR_SCENE_ITEMS_GET_ALL_ITEMS",
+        {},
+      );
+      return items;
     }
   }
 
