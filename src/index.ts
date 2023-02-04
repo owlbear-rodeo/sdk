@@ -6,6 +6,7 @@ import SceneApi from "./api/scene/SceneApi";
 import ContextMenuApi from "./api/ContextMenuApi";
 import ToolApi from "./api/ToolApi";
 import PopoverApi from "./api/PopoverApi";
+import ModalApi from "./api/ModalApi";
 import ActionApi from "./api/ActionApi";
 
 import { CurveBuilder } from "./builders/CurveBuilder";
@@ -39,6 +40,7 @@ const sceneApi = new SceneApi(messageBus);
 const contextMenuApi = new ContextMenuApi(messageBus);
 const toolApi = new ToolApi(messageBus);
 const popoverApi = new PopoverApi(messageBus);
+const modalApi = new ModalApi(messageBus);
 const actionApi = new ActionApi(messageBus);
 const interactionApi = new InteractionApi(messageBus);
 
@@ -59,6 +61,7 @@ const OBR = {
   contextMenu: contextMenuApi,
   tool: toolApi,
   popover: popoverApi,
+  modal: modalApi,
   action: actionApi,
   interaction: interactionApi,
 };
