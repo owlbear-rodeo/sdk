@@ -9,12 +9,10 @@ class PopoverApi {
     this.messageBus = messageBus;
   }
 
-  async open(popover: Popover): Promise<string> {
-    const { id } = await this.messageBus.sendAsync<{ id: string }>(
-      "OBR_POPOVER_OPEN",
-      { ...normalizeUrlObject(popover) },
-    );
-    return id;
+  async open(popover: Popover): Promise<void> {
+    await this.messageBus.sendAsync("OBR_POPOVER_OPEN", {
+      ...normalizeUrlObject(popover),
+    });
   }
 
   async close(id: string): Promise<void> {
