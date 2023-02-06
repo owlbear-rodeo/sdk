@@ -1,8 +1,8 @@
 import { enablePatches, produceWithPatches } from "immer";
 import MessageBus from "../messages/MessageBus";
+import { Item } from "../types";
 import {
   DispatchInteractionUpdate,
-  ItemInteraction,
   ItemInteractionManager,
   StopInteraction,
 } from "../types/Interaction";
@@ -17,7 +17,7 @@ class InteractionApi {
   }
 
   async startItemInteraction(
-    baseState: ItemInteraction,
+    baseState: Item[],
   ): Promise<ItemInteractionManager> {
     const { id } = await this.messageBus.sendAsync<{ id: string }>(
       "OBR_INTERACTION_START_ITEM_INTERACTION",
@@ -25,7 +25,7 @@ class InteractionApi {
     );
 
     let prev = baseState;
-    const dispatcher: DispatchInteractionUpdate<ItemInteraction> = (update) => {
+    const dispatcher: DispatchInteractionUpdate<Item[]> = (update) => {
       const [next, patches] = produceWithPatches(prev, update);
       prev = next;
       this.messageBus.send("OBR_INTERACTION_UPDATE_ITEM_INTERACTION", {
