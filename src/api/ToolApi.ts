@@ -1,5 +1,6 @@
 import { normalizeIconPaths } from "../common/normalize";
 import MessageBus from "../messages/MessageBus";
+import { Metadata } from "../types";
 import {
   Tool,
   ToolAction,
@@ -226,6 +227,20 @@ class ToolApi {
 
   async activateTool(id: string): Promise<void> {
     await this.messageBus.sendAsync("OBR_TOOL_ACTIVATE", { id });
+  }
+
+  async getMetadata(id: string): Promise<Metadata | undefined> {
+    const { metadata } = await this.messageBus.sendAsync<{
+      metadata?: Metadata;
+    }>("OBR_TOOL_GET_METADATA", { id });
+    return metadata;
+  }
+
+  async updateMetadata(toolId: string, metadata: Metadata): Promise<void> {
+    await this.messageBus.sendAsync("OBR_TOOL_UPDATE_METADATA", {
+      toolId,
+      metadata,
+    });
   }
 
   async createAction(action: ToolAction): Promise<void> {
