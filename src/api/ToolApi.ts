@@ -115,7 +115,20 @@ class ToolApi {
   }) => {
     const mode = this.toolModes[event.id];
     if (mode) {
-      mode.onToolClick?.(event.context, event.event);
+      if (mode.onToolClick) {
+        const select = mode.onToolClick(event.context, event.event);
+        if (select && event.event.target && !event.event.target.locked) {
+          this.messageBus.sendAsync("OBR_PLAYER_SELECT", {
+            items: [event.event.target.id],
+          });
+        }
+      } else {
+        if (event.event.target && !event.event.target.locked) {
+          this.messageBus.sendAsync("OBR_PLAYER_SELECT", {
+            items: [event.event.target.id],
+          });
+        }
+      }
     }
   };
 
@@ -126,7 +139,20 @@ class ToolApi {
   }) => {
     const mode = this.toolModes[event.id];
     if (mode) {
-      mode.onToolDoubleClick?.(event.context, event.event);
+      if (mode.onToolDoubleClick) {
+        const select = mode.onToolDoubleClick(event.context, event.event);
+        if (select && event.event.target) {
+          this.messageBus.sendAsync("OBR_PLAYER_SELECT", {
+            items: [event.event.target.id],
+          });
+        }
+      } else {
+        if (event.event.target) {
+          this.messageBus.sendAsync("OBR_PLAYER_SELECT", {
+            items: [event.event.target.id],
+          });
+        }
+      }
     }
   };
 
