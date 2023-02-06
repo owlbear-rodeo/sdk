@@ -30,8 +30,11 @@ export interface ToolIcon {
   filter?: ToolFilter;
 }
 
-export interface ToolCursorFilter extends ToolFilter {
+export interface ToolModeFilter extends ToolFilter {
   target?: KeyFilter[];
+}
+
+export interface ToolCursorFilter extends ToolModeFilter {
   dragging?: boolean;
 }
 
@@ -53,6 +56,7 @@ export interface ToolMode {
   icons: ToolIcon[];
   disabled?: ToolFilter;
   cursors?: ToolCursor[];
+  preventDrag?: ToolModeFilter;
   onClick?: (
     context: ToolContext,
     elementId: string,
@@ -68,10 +72,7 @@ export interface ToolMode {
   onToolDown?: (context: ToolContext, event: ToolEvent) => void;
   onToolMove?: (context: ToolContext, event: ToolEvent) => void;
   onToolUp?: (context: ToolContext, event: ToolEvent) => void;
-  onToolDragStart?: (
-    context: ToolContext,
-    event: ToolEvent,
-  ) => boolean | undefined | void;
+  onToolDragStart?: (context: ToolContext, event: ToolEvent) => void;
   onToolDragMove?: (context: ToolContext, event: ToolEvent) => void;
   onToolDragEnd?: (context: ToolContext, event: ToolEvent) => void;
   onToolDragCancel?: (context: ToolContext, event: ToolEvent) => void;

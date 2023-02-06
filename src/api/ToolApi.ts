@@ -264,6 +264,7 @@ class ToolApi {
       id: mode.id,
       shortcut: mode.shortcut,
       icons: normalizeIconPaths(mode.icons),
+      preventDrag: mode.preventDrag,
       disabled: mode.disabled,
       cursors: mode.cursors,
     });
