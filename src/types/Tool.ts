@@ -32,15 +32,12 @@ export interface ToolIcon {
 
 export interface ToolModeFilter extends ToolFilter {
   target?: KeyFilter[];
-}
-
-export interface ToolCursorFilter extends ToolModeFilter {
   dragging?: boolean;
 }
 
 export interface ToolCursor {
   cursor: string;
-  filter?: ToolCursorFilter;
+  filter?: ToolModeFilter;
 }
 
 export interface ToolAction {
