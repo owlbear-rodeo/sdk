@@ -24,6 +24,7 @@
   "dependencies": {
     "events": "^3.3.0",
     "immer": "^9.0.15",
+    "js-base64": "^3.7.5",
     "uuid": "^9.0.0"
   }
 }

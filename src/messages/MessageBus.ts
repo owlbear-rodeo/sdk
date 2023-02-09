@@ -5,12 +5,15 @@ class MessageBus extends EventEmitter {
   ready: boolean = false;
   /** The user ID of the player using this extension */
   userId: string | null = null;
+  /** The ID of the room this extension is loaded in */
+  roomId: string;
   /** A reference ID used to get responses from the target  */
   private ref: string | null = null;
   private targetOrigin: string;
 
-  constructor(origin: string) {
+  constructor(origin: string, roomId: string) {
     super();
+    this.roomId = roomId;
     this.targetOrigin = origin;
     window.addEventListener("message", this.handleMessage);
     // Increase max listeners to prevent warning message from update events

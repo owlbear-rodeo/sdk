@@ -8,6 +8,9 @@ import ToolApi from "./api/ToolApi";
 import PopoverApi from "./api/PopoverApi";
 import ModalApi from "./api/ModalApi";
 import ActionApi from "./api/ActionApi";
+import InteractionApi from "./api/InteractionApi";
+import PartyApi from "./api/PartyApi";
+import RoomApi from "./api/RoomApi";
 
 import { CurveBuilder } from "./builders/CurveBuilder";
 import { ImageBuilder } from "./builders/ImageBuilder";
@@ -20,18 +23,13 @@ import { TextBuilder } from "./builders/TextBuilder";
 import { PathBuilder } from "./builders/PathBuilder";
 import { ImageContent } from "./types/items/ImageContent";
 import { ImageGrid } from "./types/items/ImageGrid";
-import InteractionApi from "./api/InteractionApi";
-import PartyApi from "./api/PartyApi";
+import { getDetails } from "./common/getDetails";
 
 export * from "./types";
 
-const urlSearchParams = new URLSearchParams(window.location.search);
-const origin = urlSearchParams.get("obr_origin");
+const details = getDetails();
 
-/** True if the current site is embedded in an instance of Owlbear Rodeo */
-export const isAvailable = Boolean(origin);
-
-const messageBus = new MessageBus(origin || "https://www.owlbear.app");
+const messageBus = new MessageBus(details.origin, details.roomId);
 const viewportApi = new ViewportApi(messageBus);
 const playerApi = new PlayerApi(messageBus);
 const partyApi = new PartyApi(messageBus);
@@ -43,6 +41,7 @@ const popoverApi = new PopoverApi(messageBus);
 const modalApi = new ModalApi(messageBus);
 const actionApi = new ActionApi(messageBus);
 const interactionApi = new InteractionApi(messageBus);
+const roomApi = new RoomApi(messageBus);
 
 const OBR = {
   onReady: (callback: () => void) => {
@@ -64,6 +63,9 @@ const OBR = {
   modal: modalApi,
   action: actionApi,
   interaction: interactionApi,
+  room: roomApi,
+  /** True if the current site is embedded in an instance of Owlbear Rodeo */
+  isAvailable: Boolean(details.origin),
 };
 
 function buildCurve() {
