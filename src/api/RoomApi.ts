@@ -31,25 +31,27 @@ class RoomApi {
     await this.messageBus.sendAsync("OBR_ROOM_SET_METADATA", { update });
   }
 
-  onChange(
-    callback: (state: {
-      permissions: Permission[];
-      metadata: Metadata;
-    }) => void,
-  ) {
-    const handleChange = (data: {
-      roomState: {
-        permissions: Permission[];
-        metadata: Metadata;
-      };
-    }) => {
-      callback(data.roomState);
+  onMetadataChange(callback: (metadata: Metadata) => void) {
+    const handleChange = (data: { metadata: Metadata }) => {
+      callback(data.metadata);
     };
-    this.messageBus.send("OBR_ROOM_SUBSCRIBE", {});
-    this.messageBus.on("OBR_ROOM_EVENT_CHANGE", handleChange);
+    this.messageBus.send("OBR_ROOM_METADATA_SUBSCRIBE", {});
+    this.messageBus.on("OBR_ROOM_METADATA_EVENT_CHANGE", handleChange);
     return () => {
-      this.messageBus.send("OBR_ROOM_UNSUBSCRIBE", {});
-      this.messageBus.off("OBR_ROOM_EVENT_CHANGE", handleChange);
+      this.messageBus.send("OBR_METADATA_ROOM_UNSUBSCRIBE", {});
+      this.messageBus.off("OBR_ROOM_METADATA_EVENT_CHANGE", handleChange);
+    };
+  }
+
+  onPermissionsChange(callback: (permissions: Permission[]) => void) {
+    const handleChange = (data: { permissions: Permission[] }) => {
+      callback(data.permissions);
+    };
+    this.messageBus.send("OBR_ROOM_PERMISSIONS_SUBSCRIBE", {});
+    this.messageBus.on("OBR_ROOM_PERMISSIONS_EVENT_CHANGE", handleChange);
+    return () => {
+      this.messageBus.send("OBR_PERMISSIONS_ROOM_UNSUBSCRIBE", {});
+      this.messageBus.off("OBR_ROOM_PERMISSIONS_EVENT_CHANGE", handleChange);
     };
   }
 }
