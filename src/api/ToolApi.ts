@@ -262,10 +262,10 @@ class ToolApi {
     return metadata;
   }
 
-  async updateMetadata(toolId: string, metadata: Metadata): Promise<void> {
-    await this.messageBus.sendAsync("OBR_TOOL_UPDATE_METADATA", {
+  async setMetadata(toolId: string, update: Partial<Metadata>): Promise<void> {
+    await this.messageBus.sendAsync("OBR_TOOL_SET_METADATA", {
       toolId,
-      metadata,
+      update,
     });
   }
 
