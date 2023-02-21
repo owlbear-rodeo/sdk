@@ -1,4 +1,5 @@
 import MessageBus from "../../messages/MessageBus";
+import { Metadata } from "../../types";
 import SceneFogApi from "./SceneFogApi";
 import SceneGridApi from "./SceneGridApi";
 import SceneHistoryApi from "./SceneHistoryApi";
@@ -40,6 +41,29 @@ class SceneApi {
     return () => {
       this.messageBus.send("OBR_SCENE_READY_UNSUBSCRIBE", {});
       this.messageBus.off("OBR_SCENE_EVENT_READY_CHANGE", handleChange);
+    };
+  }
+
+  async getMetadata(): Promise<Metadata> {
+    const { metadata } = await this.messageBus.sendAsync<{
+      metadata: Metadata;
+    }>("OBR_SCENE_GET_METADATA", {});
+    return metadata;
+  }
+
+  async setMetadata(update: Metadata): Promise<void> {
+    await this.messageBus.sendAsync("OBR_SCENE_SET_METADATA", { update });
+  }
+
+  onMetadataChange(callback: (metadata: Metadata) => void) {
+    const handleChange = (data: { metadata: Metadata }) => {
+      callback(data.metadata);
+    };
+    this.messageBus.send("OBR_SCENE_METADATA_SUBSCRIBE", {});
+    this.messageBus.on("OBR_SCENE_METADATA_EVENT_CHANGE", handleChange);
+    return () => {
+      this.messageBus.send("OBR_SCENE_METADATA_UNSUBSCRIBE", {});
+      this.messageBus.off("OBR_SCENE_METADATA_EVENT_CHANGE", handleChange);
     };
   }
 }
