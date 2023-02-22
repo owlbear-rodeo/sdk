@@ -78,6 +78,25 @@ class ActionApi {
   async setTitle(title: string): Promise<void> {
     await this.messageBus.sendAsync("OBR_ACTION_SET_TITLE", { title });
   }
+
+  async isOpen(): Promise<boolean> {
+    const { isOpen } = await this.messageBus.sendAsync<{
+      isOpen: boolean;
+    }>("OBR_ACTION_GET_IS_OPEN", {});
+    return isOpen;
+  }
+
+  onOpenChange(callback: (isOpen: boolean) => void) {
+    const handleChange = (data: { isOpen: boolean }) => {
+      callback(data.isOpen);
+    };
+    this.messageBus.send("OBR_ACTION_IS_OPEN_SUBSCRIBE", {});
+    this.messageBus.on("OBR_ACTION_IS_OPEN_EVENT_CHANGE", handleChange);
+    return () => {
+      this.messageBus.send("OBR_IS_OPEN_ACTION_UNSUBSCRIBE", {});
+      this.messageBus.off("OBR_ACTION_IS_OPEN_EVENT_CHANGE", handleChange);
+    };
+  }
 }
 
 export default ActionApi;
