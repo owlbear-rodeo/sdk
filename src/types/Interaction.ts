@@ -1,5 +1,4 @@
 import { Draft } from "immer";
-import { Item } from "./items/Item";
 
 export type StopInteraction = () => void;
 export type UpdateInteraction<State> = (draft: Draft<State>) => void;
@@ -11,5 +10,3 @@ export type InteractionManager<State> = [
   DispatchInteractionUpdate<State>,
   StopInteraction,
 ];
-
-export type ItemInteractionManager = InteractionManager<Item[]>;
