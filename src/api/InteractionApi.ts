@@ -3,7 +3,7 @@ import MessageBus from "../messages/MessageBus";
 import { Item } from "../types";
 import {
   DispatchInteractionUpdate,
-  ItemInteractionManager,
+  InteractionManager,
   StopInteraction,
 } from "../types/Interaction";
 
@@ -16,16 +16,16 @@ class InteractionApi {
     this.messageBus = messageBus;
   }
 
-  async startItemInteraction(
-    baseState: Item[],
-  ): Promise<ItemInteractionManager> {
+  async startItemInteraction<S extends Item | Item[]>(
+    baseState: S,
+  ): Promise<InteractionManager<S>> {
     const { id } = await this.messageBus.sendAsync<{ id: string }>(
       "OBR_INTERACTION_START_ITEM_INTERACTION",
       { baseState },
     );
 
     let prev = baseState;
-    const dispatcher: DispatchInteractionUpdate<Item[]> = (update) => {
+    const dispatcher: DispatchInteractionUpdate<S> = (update) => {
       const [next, patches] = produceWithPatches(prev, update);
       prev = next;
       this.messageBus.send("OBR_INTERACTION_UPDATE_ITEM_INTERACTION", {
