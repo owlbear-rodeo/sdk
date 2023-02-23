@@ -1,6 +1,7 @@
 import MessageBus from "../messages/MessageBus";
 import { Metadata } from "../types/Metadata";
 import { Permission } from "../types/Permission";
+import { Player } from "../types/Player";
 
 class PlayerApi {
   private messageBus: MessageBus;
@@ -111,6 +112,18 @@ class PlayerApi {
       connectionId: string;
     }>("OBR_PLAYER_GET_CONNECTION_ID", {});
     return connectionId;
+  }
+
+  onChange(callback: (player: Player) => void) {
+    const handleChange = (data: { player: Player }) => {
+      callback(data.player);
+    };
+    this.messageBus.send("OBR_PLAYER_SUBSCRIBE", {});
+    this.messageBus.on("OBR_PLAYER_EVENT_CHANGE", handleChange);
+    return () => {
+      this.messageBus.send("OBR_PLAYER_UNSUBSCRIBE", {});
+      this.messageBus.off("OBR_PLAYER_EVENT_CHANGE", handleChange);
+    };
   }
 }
 
