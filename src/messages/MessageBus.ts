@@ -1,5 +1,6 @@
 import { isMessage } from "./Message";
 import { EventEmitter } from "events";
+import { v4 as uuid } from "uuid";
 
 class MessageBus extends EventEmitter {
   ready: boolean = false;
@@ -39,7 +40,18 @@ class MessageBus extends EventEmitter {
     }
   };
 
-  send = (id: string, data: unknown) => {
+  /**
+   * @param nonce
+   * A nonce that will be appended to the response event ID
+   * This allows concurrent calls to the same API endpoint
+   * For example a call to `GET_ITEM` will respond with the `GET_ITEM_RESPONSE`
+   * event. But if we make two concurrent calls to `GET_ITEM`
+   * we cannot differentiate between the two `GET_ITEM_RESPONSE`
+   * events. This nonce will be appended to the response so that
+   * a `GET_ITEM` event called with the nonce `_123` will respond
+   * with `GET_ITEM_RESPONSE_123`.
+   */
+  send = (id: string, data: unknown, nonce?: string) => {
     if (!this.ref) {
       throw Error("Unable to send message: not ready");
     }
@@ -48,6 +60,7 @@ class MessageBus extends EventEmitter {
         id,
         data,
         ref: this.ref,
+        nonce,
       },
       this.targetOrigin,
     );
@@ -58,23 +71,24 @@ class MessageBus extends EventEmitter {
     data: unknown,
     timeout = 5000,
   ): Promise<ReturnValue> => {
-    this.send(id, data);
+    const nonce = `_${uuid()}`;
+    this.send(id, data, nonce);
     return Promise.race([
       new Promise<ReturnValue>((resolve, reject) => {
         const self = this;
         function onResponse(value: ReturnValue) {
           // Remove listeners for this event to avoid memory and data leaks
-          self.off(`${id}_RESPONSE`, onResponse);
-          self.off(`${id}_ERROR`, onError);
+          self.off(`${id}_RESPONSE${nonce}`, onResponse);
+          self.off(`${id}_ERROR${nonce}`, onError);
           resolve(value);
         }
         function onError(error: unknown) {
-          self.off(`${id}_RESPONSE`, onResponse);
-          self.off(`${id}_ERROR`, onError);
+          self.off(`${id}_RESPONSE${nonce}`, onResponse);
+          self.off(`${id}_ERROR${nonce}`, onError);
           reject(error);
         }
-        this.on(`${id}_RESPONSE`, onResponse);
-        this.on(`${id}_ERROR`, onError);
+        this.on(`${id}_RESPONSE${nonce}`, onResponse);
+        this.on(`${id}_ERROR${nonce}`, onError);
       }),
       new Promise<ReturnValue>((_, reject) =>
         window.setTimeout(
