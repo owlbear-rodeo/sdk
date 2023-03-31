@@ -52,7 +52,9 @@ const OBR = {
       messageBus.once("OBR_READY", () => callback());
     }
   },
-  isReady: messageBus.ready,
+  get isReady() {
+    return messageBus.ready;
+  },
   viewport: viewportApi,
   player: playerApi,
   party: partyApi,
