@@ -14,6 +14,10 @@ export type ToolEvent = {
   pointerPosition: Vector2;
   target?: Item;
   transformer?: boolean;
+  altKey: boolean;
+  shiftKey: boolean;
+  ctrlKey: boolean;
+  metaKey: boolean;
 };
 
 export interface KeyEvent {
