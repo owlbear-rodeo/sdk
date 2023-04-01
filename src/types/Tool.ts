@@ -16,6 +16,16 @@ export type ToolEvent = {
   transformer?: boolean;
 };
 
+export interface KeyEvent {
+  altKey: boolean;
+  code: string;
+  key: string;
+  shiftKey: boolean;
+  ctrlKey: boolean;
+  metaKey: boolean;
+  repeat: boolean;
+}
+
 export interface ToolFilter {
   activeTools?: string[];
   activeModes?: string[];
@@ -73,6 +83,8 @@ export interface ToolMode {
   onToolDragMove?: (context: ToolContext, event: ToolEvent) => void;
   onToolDragEnd?: (context: ToolContext, event: ToolEvent) => void;
   onToolDragCancel?: (context: ToolContext, event: ToolEvent) => void;
+  onKeyDown?: (context: ToolContext, event: KeyEvent) => void;
+  onKeyUp?: (context: ToolContext, event: KeyEvent) => void;
   shortcut?: string;
 }
 

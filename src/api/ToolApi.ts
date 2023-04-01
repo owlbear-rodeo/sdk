@@ -2,6 +2,7 @@ import { normalizeIconPaths } from "../common/normalize";
 import MessageBus from "../messages/MessageBus";
 import { Metadata } from "../types";
 import {
+  KeyEvent,
   Tool,
   ToolAction,
   ToolContext,
@@ -49,6 +50,8 @@ class ToolApi {
       "OBR_TOOL_MODE_EVENT_TOOL_DRAG_CANCEL",
       this.handleToolModeToolDragCancel,
     );
+    messageBus.on("OBR_TOOL_MODE_EVENT_KEY_DOWN", this.handleToolModeKeyDown);
+    messageBus.on("OBR_TOOL_MODE_EVENT_KEY_UP", this.handleToolModeKeyUp);
   }
 
   private handleToolClick = (event: {
@@ -230,6 +233,28 @@ class ToolApi {
     const mode = this.toolModes[event.id];
     if (mode) {
       mode.onToolDragCancel?.(event.context, event.event);
+    }
+  };
+
+  private handleToolModeKeyDown = (event: {
+    id: string;
+    context: ToolContext;
+    event: KeyEvent;
+  }) => {
+    const mode = this.toolModes[event.id];
+    if (mode) {
+      mode.onKeyDown?.(event.context, event.event);
+    }
+  };
+
+  private handleToolModeKeyUp = (event: {
+    id: string;
+    context: ToolContext;
+    event: KeyEvent;
+  }) => {
+    const mode = this.toolModes[event.id];
+    if (mode) {
+      mode.onKeyUp?.(event.context, event.event);
     }
   };
 
