@@ -1,4 +1,5 @@
 import MessageBus from "../messages/MessageBus";
+import { BoundingBox } from "../types";
 import { Vector2 } from "../types/Vector2";
 import { ViewportTransform } from "../types/ViewportTransform";
 
@@ -18,6 +19,12 @@ class ViewportApi {
 
   async animateTo(transform: ViewportTransform): Promise<void> {
     await this.messageBus.sendAsync("OBR_VIEWPORT_ANIMATE_TO", { transform });
+  }
+
+  async animateToBounds(bounds: BoundingBox): Promise<void> {
+    await this.messageBus.sendAsync("OBR_VIEWPORT_ANIMATE_TO_BOUNDS", {
+      bounds,
+    });
   }
 
   async getPosition(): Promise<Vector2> {
