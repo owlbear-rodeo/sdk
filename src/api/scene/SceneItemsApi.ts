@@ -3,6 +3,7 @@ import { ItemFilter } from "../../types/ItemFilter";
 import { Item } from "../../types/items/Item";
 import { enablePatches, produceWithPatches } from "immer";
 import { WritableDraft } from "immer/dist/internal";
+import { BoundingBox } from "../../types/BoundingBox";
 
 enablePatches();
 
@@ -88,6 +89,13 @@ class SceneItemsApi {
       { ids },
     );
     return items;
+  }
+
+  async getItemBounds(ids: string[]): Promise<BoundingBox> {
+    const { bounds } = await this.messageBus.sendAsync<{
+      bounds: BoundingBox;
+    }>("OBR_SCENE_ITEMS_GET_ITEM_BOUNDS", { ids });
+    return bounds;
   }
 
   onChange(callback: (items: Item[]) => void) {

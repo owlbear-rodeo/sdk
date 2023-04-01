@@ -1,4 +1,5 @@
 import MessageBus from "../../messages/MessageBus";
+import { BoundingBox } from "../../types/BoundingBox";
 import { ItemFilter } from "../../types/ItemFilter";
 import { Item } from "../../types/items/Item";
 import { enablePatches, produceWithPatches } from "immer";
@@ -79,6 +80,13 @@ class SceneLocalApi {
       { ids },
     );
     return items;
+  }
+
+  async getItemBounds(ids: string[]): Promise<BoundingBox> {
+    const { bounds } = await this.messageBus.sendAsync<{
+      bounds: BoundingBox;
+    }>("OBR_SCENE_LOCAL_GET_ITEM_BOUNDS", { ids });
+    return bounds;
   }
 
   onChange(callback: (items: Item[]) => void) {
