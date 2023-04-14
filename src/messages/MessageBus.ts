@@ -55,7 +55,7 @@ class MessageBus extends EventEmitter {
     if (!this.ref) {
       throw Error("Unable to send message: not ready");
     }
-    window.top?.postMessage(
+    window.parent?.postMessage(
       {
         id,
         data,
