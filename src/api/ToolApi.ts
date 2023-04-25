@@ -62,12 +62,14 @@ class ToolApi {
     const tool = this.tools[event.id];
     if (tool) {
       if (tool.onClick) {
-        const activate = tool.onClick(event.context, event.elementId);
-        if (activate) {
-          this.messageBus.send("OBR_TOOL_ACTIVATE", {
-            id: event.id,
-          });
-        }
+        const result = tool.onClick(event.context, event.elementId);
+        Promise.resolve(result).then((activate) => {
+          if (activate) {
+            this.messageBus.send("OBR_TOOL_ACTIVATE", {
+              id: event.id,
+            });
+          }
+        });
       } else {
         this.messageBus.send("OBR_TOOL_ACTIVATE", {
           id: event.id,
@@ -95,13 +97,15 @@ class ToolApi {
     const mode = this.toolModes[event.id];
     if (mode) {
       if (mode.onClick) {
-        const activate = mode.onClick(event.context, event.elementId);
-        if (activate) {
-          this.messageBus.send("OBR_TOOL_MODE_ACTIVATE", {
-            toolId: event.context.activeTool,
-            modeId: event.id,
-          });
-        }
+        const result = mode.onClick(event.context, event.elementId);
+        Promise.resolve(result).then((activate) => {
+          if (activate) {
+            this.messageBus.send("OBR_TOOL_MODE_ACTIVATE", {
+              toolId: event.context.activeTool,
+              modeId: event.id,
+            });
+          }
+        });
       } else {
         this.messageBus.send("OBR_TOOL_MODE_ACTIVATE", {
           toolId: event.context.activeTool,
@@ -119,12 +123,14 @@ class ToolApi {
     const mode = this.toolModes[event.id];
     if (mode) {
       if (mode.onToolClick) {
-        const select = mode.onToolClick(event.context, event.event);
-        if (select && event.event.target && !event.event.target.locked) {
-          this.messageBus.sendAsync("OBR_PLAYER_SELECT", {
-            items: [event.event.target.id],
-          });
-        }
+        const result = mode.onToolClick(event.context, event.event);
+        Promise.resolve(result).then((select) => {
+          if (select && event.event.target && !event.event.target.locked) {
+            this.messageBus.sendAsync("OBR_PLAYER_SELECT", {
+              items: [event.event.target.id],
+            });
+          }
+        });
       } else {
         if (event.event.target && !event.event.target.locked) {
           this.messageBus.sendAsync("OBR_PLAYER_SELECT", {
@@ -143,12 +149,14 @@ class ToolApi {
     const mode = this.toolModes[event.id];
     if (mode) {
       if (mode.onToolDoubleClick) {
-        const select = mode.onToolDoubleClick(event.context, event.event);
-        if (select && event.event.target) {
-          this.messageBus.sendAsync("OBR_PLAYER_SELECT", {
-            items: [event.event.target.id],
-          });
-        }
+        const result = mode.onToolDoubleClick(event.context, event.event);
+        Promise.resolve(result).then((select) => {
+          if (select && event.event.target) {
+            this.messageBus.sendAsync("OBR_PLAYER_SELECT", {
+              items: [event.event.target.id],
+            });
+          }
+        });
       } else {
         if (event.event.target) {
           this.messageBus.sendAsync("OBR_PLAYER_SELECT", {

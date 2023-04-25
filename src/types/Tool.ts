@@ -71,15 +71,15 @@ export interface ToolMode {
   onClick?: (
     context: ToolContext,
     elementId: string,
-  ) => boolean | undefined | void;
+  ) => boolean | undefined | void | Promise<boolean | undefined | void>;
   onToolClick?: (
     context: ToolContext,
     event: ToolEvent,
-  ) => boolean | undefined | void;
+  ) => boolean | undefined | void | Promise<boolean | undefined | void>;
   onToolDoubleClick?: (
     context: ToolContext,
     event: ToolEvent,
-  ) => boolean | undefined | void;
+  ) => boolean | undefined | void | Promise<boolean | undefined | void>;
   onToolDown?: (context: ToolContext, event: ToolEvent) => void;
   onToolMove?: (context: ToolContext, event: ToolEvent) => void;
   onToolUp?: (context: ToolContext, event: ToolEvent) => void;
@@ -99,7 +99,7 @@ export interface Tool {
   onClick?: (
     context: ToolContext,
     elementId: string,
-  ) => boolean | undefined | void;
+  ) => boolean | undefined | void | Promise<boolean | undefined | void>;
   shortcut?: string;
   defaultMode?: string;
   defaultMetadata?: Metadata;
