@@ -11,6 +11,7 @@ import ActionApi from "./api/ActionApi";
 import InteractionApi from "./api/InteractionApi";
 import PartyApi from "./api/PartyApi";
 import RoomApi from "./api/RoomApi";
+import ThemeApi from "./api/ThemeApi";
 
 import { CurveBuilder } from "./builders/CurveBuilder";
 import { ImageBuilder } from "./builders/ImageBuilder";
@@ -42,6 +43,7 @@ const modalApi = new ModalApi(messageBus);
 const actionApi = new ActionApi(messageBus);
 const interactionApi = new InteractionApi(messageBus);
 const roomApi = new RoomApi(messageBus);
+const themeApi = new ThemeApi(messageBus);
 
 const OBR = {
   onReady: (callback: () => void) => {
@@ -67,6 +69,7 @@ const OBR = {
   action: actionApi,
   interaction: interactionApi,
   room: roomApi,
+  theme: themeApi,
   /** True if the current site is embedded in an instance of Owlbear Rodeo */
   isAvailable: Boolean(details.origin),
 };

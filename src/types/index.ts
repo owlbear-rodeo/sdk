@@ -26,3 +26,4 @@ export * from "./ViewportTransform";
 export * from "./Interaction";
 export * from "./ObjectOrArray";
 export * from "./Player";
+export * from "./Theme";
