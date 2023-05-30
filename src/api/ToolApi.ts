@@ -52,6 +52,11 @@ class ToolApi {
     );
     messageBus.on("OBR_TOOL_MODE_EVENT_KEY_DOWN", this.handleToolModeKeyDown);
     messageBus.on("OBR_TOOL_MODE_EVENT_KEY_UP", this.handleToolModeKeyUp);
+    messageBus.on("OBR_TOOL_MODE_EVENT_ACTIVATE", this.handleToolModeActivate);
+    messageBus.on(
+      "OBR_TOOL_MODE_EVENT_DEACTIVATE",
+      this.handleToolModeDeactivate,
+    );
   }
 
   private handleToolClick = (event: {
@@ -263,6 +268,26 @@ class ToolApi {
     const mode = this.toolModes[event.id];
     if (mode) {
       mode.onKeyUp?.(event.context, event.event);
+    }
+  };
+
+  private handleToolModeActivate = (event: {
+    id: string;
+    context: ToolContext;
+  }) => {
+    const mode = this.toolModes[event.id];
+    if (mode) {
+      mode.onActivate?.(event.context);
+    }
+  };
+
+  private handleToolModeDeactivate = (event: {
+    id: string;
+    context: ToolContext;
+  }) => {
+    const mode = this.toolModes[event.id];
+    if (mode) {
+      mode.onDeactivate?.(event.context);
     }
   };
 

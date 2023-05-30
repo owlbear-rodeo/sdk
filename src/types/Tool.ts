@@ -89,6 +89,8 @@ export interface ToolMode {
   onToolDragCancel?: (context: ToolContext, event: ToolEvent) => void;
   onKeyDown?: (context: ToolContext, event: KeyEvent) => void;
   onKeyUp?: (context: ToolContext, event: KeyEvent) => void;
+  onActivate?: (context: ToolContext) => void;
+  onDeactivate?: (context: ToolContext) => void;
   shortcut?: string;
 }
 
