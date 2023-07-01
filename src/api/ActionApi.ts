@@ -86,6 +86,14 @@ class ActionApi {
     return isOpen;
   }
 
+  async open(): Promise<void> {
+    await this.messageBus.sendAsync("OBR_ACTION_OPEN", {});
+  }
+
+  async close(): Promise<void> {
+    await this.messageBus.sendAsync("OBR_ACTION_CLOSE", {});
+  }
+
   onOpenChange(callback: (isOpen: boolean) => void) {
     const handleChange = (data: { isOpen: boolean }) => {
       callback(data.isOpen);
