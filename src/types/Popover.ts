@@ -14,4 +14,7 @@ export interface Popover {
     vertical: "BOTTOM" | "CENTER" | "TOP";
   };
   anchorReference?: "ELEMENT" | "POSITION";
+  hidePaper?: boolean;
+  disableClickAway?: boolean;
+  marginThreshold?: number;
 }
