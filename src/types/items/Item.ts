@@ -17,6 +17,15 @@ export type Layer =
   | "CONTROL"
   | "POPOVER";
 
+export type AttachmentBehavior =
+  | "VISIBLE"
+  | "SCALE"
+  | "ROTATION"
+  | "POSITION"
+  | "DELETE"
+  | "LOCKED"
+  | "COPY";
+
 export interface Item {
   id: string;
   type: string;
@@ -35,4 +44,5 @@ export interface Item {
   attachedTo?: string;
   disableHit?: boolean;
   disableAutoZIndex?: boolean;
+  disableAttachmentBehavior?: AttachmentBehavior[];
 }

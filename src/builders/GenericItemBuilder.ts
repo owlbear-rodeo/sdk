@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 import PlayerApi from "../api/PlayerApi";
-import { Item, Layer } from "../types/items/Item";
+import { AttachmentBehavior, Item, Layer } from "../types/items/Item";
 import { Metadata } from "../types/Metadata";
 import { Vector2 } from "../types/Vector2";
 
@@ -102,6 +102,11 @@ export abstract class GenericItemBuilder<B extends GenericItemBuilder<B>> {
 
   disableAutoZIndex(disable: boolean): B {
     this._item.disableAutoZIndex = disable;
+    return this.self();
+  }
+
+  disableAttachmentBehavior(disable: AttachmentBehavior[]): B {
+    this._item.disableAttachmentBehavior = disable;
     return this.self();
   }
 
