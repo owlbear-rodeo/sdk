@@ -33,7 +33,7 @@ export class ImageBuilder extends GenericItemBuilder<ImageBuilder> {
       style: {
         padding: 8,
         fontFamily: "Roboto",
-        fontSize: 16,
+        fontSize: 24,
         fontWeight: 400,
         textAlign: "CENTER",
         textAlignVertical: "BOTTOM",
