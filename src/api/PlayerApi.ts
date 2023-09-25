@@ -29,8 +29,8 @@ class PlayerApi {
     await this.messageBus.sendAsync("OBR_PLAYER_SELECT", { items, replace });
   }
 
-  async deselect(items: string[] | undefined): Promise<void> {
-    await this.messageBus.sendAsync("OBR_PLAYER_DESELECt", { items });
+  async deselect(items?: string[] | undefined): Promise<void> {
+    await this.messageBus.sendAsync("OBR_PLAYER_DESELECT", { items });
   }
 
   async getName(): Promise<string> {
