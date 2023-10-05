@@ -27,6 +27,7 @@ import { ImageGrid } from "./types/items/ImageGrid";
 import { getDetails } from "./common/getDetails";
 
 export * from "./types";
+export * from "./math";
 
 const details = getDetails();
 

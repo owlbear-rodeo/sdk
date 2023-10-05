@@ -27,3 +27,4 @@ export * from "./Interaction";
 export * from "./ObjectOrArray";
 export * from "./Player";
 export * from "./Theme";
+export * from "./Matrix";
