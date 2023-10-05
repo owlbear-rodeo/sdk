@@ -4,8 +4,15 @@ import { AttachmentBehavior, Item, Layer } from "../types/items/Item";
 import { Metadata } from "../types/Metadata";
 import { Vector2 } from "../types/Vector2";
 
+// Shim the item to remove readonly properties
+type BuilderItem = Omit<Item, "id" | "lastModified" | "lastModifiedUserId"> & {
+  id: string;
+  lastModified: string;
+  lastModifiedUserId: string;
+};
+
 export abstract class GenericItemBuilder<B extends GenericItemBuilder<B>> {
-  protected _item: Item;
+  protected _item: BuilderItem;
 
   constructor(player: PlayerApi) {
     this._item = {

@@ -27,15 +27,15 @@ export type AttachmentBehavior =
   | "COPY";
 
 export interface Item {
-  id: string;
+  readonly id: string;
   type: string;
   name: string;
   visible: boolean;
   locked: boolean;
   createdUserId: string;
   zIndex: number;
-  lastModified: string;
-  lastModifiedUserId: string;
+  readonly lastModified: string;
+  readonly lastModifiedUserId: string;
   position: Vector2;
   rotation: number;
   scale: Vector2;
