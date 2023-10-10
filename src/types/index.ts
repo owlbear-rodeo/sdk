@@ -28,3 +28,4 @@ export * from "./ObjectOrArray";
 export * from "./Player";
 export * from "./Theme";
 export * from "./Matrix";
+export * from "./Assets";

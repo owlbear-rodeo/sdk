@@ -12,6 +12,7 @@ import InteractionApi from "./api/InteractionApi";
 import PartyApi from "./api/PartyApi";
 import RoomApi from "./api/RoomApi";
 import ThemeApi from "./api/ThemeApi";
+import AssetsApi from "./api/AssetsApi";
 
 import { CurveBuilder } from "./builders/CurveBuilder";
 import { ImageBuilder } from "./builders/ImageBuilder";
@@ -22,6 +23,9 @@ import { RulerBuilder } from "./builders/RulerBuilder";
 import { ShapeBuilder } from "./builders/ShapeBuilder";
 import { TextBuilder } from "./builders/TextBuilder";
 import { PathBuilder } from "./builders/PathBuilder";
+import { ImageUploadBuilder } from "./builders/ImageUploadBuilder";
+import { SceneUploadBuilder } from "./builders/SceneUploadBuilder";
+
 import { ImageContent } from "./types/items/ImageContent";
 import { ImageGrid } from "./types/items/ImageGrid";
 import { getDetails } from "./common/getDetails";
@@ -45,6 +49,7 @@ const actionApi = new ActionApi(messageBus);
 const interactionApi = new InteractionApi(messageBus);
 const roomApi = new RoomApi(messageBus);
 const themeApi = new ThemeApi(messageBus);
+const assetsApi = new AssetsApi(messageBus);
 
 const OBR = {
   onReady: (callback: () => void) => {
@@ -71,6 +76,7 @@ const OBR = {
   interaction: interactionApi,
   room: roomApi,
   theme: themeApi,
+  assets: assetsApi,
   /** True if the current site is embedded in an instance of Owlbear Rodeo */
   isAvailable: Boolean(details.origin),
 };
@@ -111,6 +117,14 @@ function buildPath() {
   return new PathBuilder(playerApi);
 }
 
+function buildImageUpload(file: File) {
+  return new ImageUploadBuilder(file);
+}
+
+function buildSceneUpload() {
+  return new SceneUploadBuilder();
+}
+
 export {
   buildCurve,
   buildImage,
@@ -121,6 +135,8 @@ export {
   buildShape,
   buildText,
   buildPath,
+  buildImageUpload,
+  buildSceneUpload,
 };
 
 export default OBR;
