@@ -18,10 +18,11 @@ class InteractionApi {
 
   async startItemInteraction<S extends Item | Item[]>(
     baseState: S,
+    updateAttachments = true,
   ): Promise<InteractionManager<S>> {
     const { id } = await this.messageBus.sendAsync<{ id: string }>(
       "OBR_INTERACTION_START_ITEM_INTERACTION",
-      { baseState },
+      { baseState, updateAttachments },
     );
 
     let prev = baseState;

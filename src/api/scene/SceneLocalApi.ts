@@ -42,6 +42,7 @@ class SceneLocalApi {
     filter: ItemFilter<ItemType>,
     update: (draft: WritableDraft<ItemType[]>) => void,
     fastUpdate?: boolean,
+    updateAttachments = true,
   ) {
     const items = await this.getItems(filter);
     const [nextState, patches] = produceWithPatches(items, update);
@@ -59,6 +60,7 @@ class SceneLocalApi {
     await this.messageBus.sendAsync("OBR_SCENE_LOCAL_UPDATE_ITEMS", {
       updates,
       fastUpdate,
+      updateAttachments,
     });
   }
 
