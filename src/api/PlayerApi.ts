@@ -104,7 +104,7 @@ class PlayerApi {
     const { permissions } = await this.messageBus.sendAsync<{
       permissions: Permission[];
     }>("OBR_ROOM_GET_PERMISSIONS", {});
-    return permissions.indexOf(permission) === -1;
+    return permissions.indexOf(permission) > -1;
   }
 
   async getConnectionId(): Promise<string> {
