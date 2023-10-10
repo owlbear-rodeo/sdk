@@ -31,6 +31,21 @@ export class SceneUploadBuilder {
     return this;
   }
 
+  fogFilled(filled: boolean): SceneUploadBuilder {
+    this._upload.fog.filled = filled;
+    return this;
+  }
+
+  fogColor(color: string): SceneUploadBuilder {
+    this._upload.fog.style.color = color;
+    return this;
+  }
+
+  fogStrokeWidth(width: number): SceneUploadBuilder {
+    this._upload.fog.style.strokeWidth = width;
+    return this;
+  }
+
   gridScale(scale: string): SceneUploadBuilder {
     this._upload.grid.scale = scale;
     return this;
@@ -46,8 +61,8 @@ export class SceneUploadBuilder {
     return this;
   }
 
-  gridLineType(type: GridLineType): SceneUploadBuilder {
-    this._upload.grid.style.lineType = type;
+  gridLineType(lineType: GridLineType): SceneUploadBuilder {
+    this._upload.grid.style.lineType = lineType;
     return this;
   }
 
