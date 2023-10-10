@@ -210,7 +210,7 @@ export class Math2 {
   /**
    * Calculates an axis-aligned bounding box around an array of point
    */
-  static getBoundingBox(points: Vector2[]): BoundingBox {
+  static boundingBox(points: Vector2[]): BoundingBox {
     let minX = Number.MAX_SAFE_INTEGER;
     let maxX = Number.MIN_SAFE_INTEGER;
     let minY = Number.MAX_SAFE_INTEGER;
@@ -239,7 +239,7 @@ export class Math2 {
    * and {@link https://stackoverflow.com/questions/217578/how-can-i-determine-whether-a-2d-point-is-within-a-polygon/2922778}
    */
   static pointInPolygon(p: Vector2, points: Vector2[]): boolean {
-    const bounds = this.getBoundingBox(points);
+    const bounds = this.boundingBox(points);
     if (
       p.x < bounds.min.x ||
       p.x > bounds.max.x ||
@@ -267,7 +267,7 @@ export class Math2 {
   }
 
   /**
-   * @returns True if a the distance between `a` and `b` is under `threshold`
+   * @returns True if the distance between `a` and `b` is under `threshold`
    */
   static compare(a: Vector2, b: Vector2, threshold: number): boolean {
     return this.magnitudeSquared(this.subtract(a, b)) < threshold * threshold;
