@@ -1,4 +1,3 @@
-import { v4 as uuid } from "uuid";
 import PlayerApi from "../api/PlayerApi";
 import { AttachmentBehavior, Item, Layer } from "../types/items/Item";
 import { Metadata } from "../types/Metadata";
@@ -17,7 +16,7 @@ export abstract class GenericItemBuilder<B extends GenericItemBuilder<B>> {
   constructor(player: PlayerApi) {
     this._item = {
       createdUserId: player.id,
-      id: uuid(),
+      id: crypto.randomUUID(),
       name: "Item",
       zIndex: Date.now(),
       lastModified: new Date().toISOString(),

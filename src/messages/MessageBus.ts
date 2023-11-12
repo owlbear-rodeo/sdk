@@ -1,6 +1,5 @@
 import { isMessage } from "./Message";
 import { EventEmitter } from "events";
-import { v4 as uuid } from "uuid";
 
 class MessageBus extends EventEmitter {
   ready: boolean = false;
@@ -71,7 +70,7 @@ class MessageBus extends EventEmitter {
     data: unknown,
     timeout = 5000,
   ): Promise<ReturnValue> => {
-    const nonce = `_${uuid()}`;
+    const nonce = `_${crypto.randomUUID()}`;
     this.send(id, data, nonce);
     return Promise.race([
       new Promise<ReturnValue>((resolve, reject) => {
