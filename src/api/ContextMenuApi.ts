@@ -1,4 +1,4 @@
-import { normalizeIconPaths } from "../common/normalize";
+import { normalizeIconPaths, normalizeUrlObject } from "../common/normalize";
 import MessageBus from "../messages/MessageBus";
 import { ContextMenuContext, ContextMenuItem } from "../types/ContextMenu";
 
@@ -18,7 +18,7 @@ class ContextMenuApi {
   }) => {
     const menu = this.contextMenus[event.id];
     if (menu) {
-      menu.onClick(event.context, event.elementId);
+      menu.onClick?.(event.context, event.elementId);
     }
   };
 
@@ -27,6 +27,7 @@ class ContextMenuApi {
       id: contextMenu.id,
       shortcut: contextMenu.shortcut,
       icons: normalizeIconPaths(contextMenu.icons),
+      embed: contextMenu.embed && normalizeUrlObject(contextMenu.embed),
     });
 
     this.contextMenus[contextMenu.id] = contextMenu;

@@ -26,6 +26,10 @@ export interface ContextMenuIcon {
 export interface ContextMenuItem {
   id: string;
   icons: ContextMenuIcon[];
-  onClick: (context: ContextMenuContext, elementId: string) => void;
+  onClick?: (context: ContextMenuContext, elementId: string) => void;
   shortcut?: string;
+  embed?: {
+    url: string;
+    height?: number;
+  };
 }
