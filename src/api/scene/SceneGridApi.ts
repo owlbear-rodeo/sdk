@@ -102,6 +102,7 @@ class SceneGridApi {
     position: Vector2,
     snappingSensitivity?: number,
     useCorners?: boolean,
+    useCenter?: boolean,
   ): Promise<Vector2> {
     const { position: snapped } = await this.messageBus.sendAsync<{
       position: Vector2;
@@ -109,6 +110,7 @@ class SceneGridApi {
       position,
       snappingSensitivity,
       useCorners,
+      useCenter,
     });
     return snapped;
   }
