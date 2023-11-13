@@ -117,7 +117,7 @@ function buildPath() {
   return new PathBuilder(playerApi);
 }
 
-function buildImageUpload(file: File) {
+function buildImageUpload(file: File | Blob) {
   return new ImageUploadBuilder(file);
 }
 
