@@ -48,6 +48,11 @@ export abstract class GenericItemBuilder<B extends GenericItemBuilder<B>> {
     return this.self();
   }
 
+  description(description: string): B {
+    this._item.description = description;
+    return this.self();
+  }
+
   lastModified(lastModified: string): B {
     this._item.lastModified = lastModified;
     return this.self();
@@ -87,6 +92,7 @@ export abstract class GenericItemBuilder<B extends GenericItemBuilder<B>> {
     this._item.scale = scale;
     return this.self();
   }
+
   visible(visible: boolean): B {
     this._item.visible = visible;
     return this.self();

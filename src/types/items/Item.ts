@@ -45,4 +45,5 @@ export interface Item {
   disableHit?: boolean;
   disableAutoZIndex?: boolean;
   disableAttachmentBehavior?: AttachmentBehavior[];
+  description?: string;
 }
