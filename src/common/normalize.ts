@@ -1,3 +1,7 @@
+export function normalizeUrl(url: string) {
+  return url.startsWith("http") ? url : `${window.location.origin}${url}`;
+}
+
 /**
  * Normalize icon paths so that relative paths are transformed into absolute paths
  */
@@ -6,9 +10,7 @@ export function normalizeIconPaths<T extends { icon: string }>(
 ): T[] {
   return icons.map((base) => ({
     ...base,
-    icon: base.icon.startsWith("http")
-      ? base.icon
-      : `${window.location.origin}${base.icon}`,
+    icon: normalizeUrl(base.icon),
   }));
 }
 
@@ -18,8 +20,6 @@ export function normalizeIconPaths<T extends { icon: string }>(
 export function normalizeUrlObject<T extends { url: string }>(urlObject: T): T {
   return {
     ...urlObject,
-    url: urlObject.url.startsWith("http")
-      ? urlObject.url
-      : `${window.location.origin}${urlObject.url}`,
+    url: normalizeUrl(urlObject.url),
   };
 }
