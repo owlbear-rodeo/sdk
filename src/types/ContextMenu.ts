@@ -23,13 +23,15 @@ export interface ContextMenuIcon {
   filter?: ContextMenuIconFilter;
 }
 
+export interface ContextMenuEmbed {
+  url: string;
+  height?: number;
+}
+
 export interface ContextMenuItem {
   id: string;
   icons: ContextMenuIcon[];
   onClick?: (context: ContextMenuContext, elementId: string) => void;
   shortcut?: string;
-  embed?: {
-    url: string;
-    height?: number;
-  };
+  embed?: ContextMenuEmbed;
 }
