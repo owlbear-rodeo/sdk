@@ -56,7 +56,7 @@ class SceneItemsApi {
       items = await this.getItems(filterOrItems);
     }
     const [nextState, patches] = produceWithPatches(items, update);
-    const updates: Record<string, any>[] = nextState.map((item) => ({
+    const nextUpdates: Partial<Item>[] = nextState.map((item) => ({
       id: item.id,
       type: item.type,
     }));
@@ -64,8 +64,16 @@ class SceneItemsApi {
     for (const patch of patches) {
       const [index, key] = patch.path;
       if (typeof index === "number" && typeof key === "string") {
-        updates[index][key] = (nextState as any)[index][key];
+        (nextUpdates as any)[index][key] = (nextState as any)[index][key];
       }
+    }
+    // Filter out any update without changes
+    const updates = nextUpdates.filter(
+      // Ensure that there are updates besides the default ID and type
+      (update) => Object.keys(update).length > 2,
+    );
+    if (updates.length === 0) {
+      return;
     }
     await this.messageBus.sendAsync("OBR_SCENE_ITEMS_UPDATE_ITEMS", {
       updates,
