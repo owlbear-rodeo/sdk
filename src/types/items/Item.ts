@@ -28,7 +28,7 @@ export type AttachmentBehavior =
 
 export interface Item {
   readonly id: string;
-  type: string;
+  readonly type: string;
   name: string;
   visible: boolean;
   locked: boolean;
