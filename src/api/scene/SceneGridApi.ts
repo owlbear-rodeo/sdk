@@ -1,4 +1,4 @@
-import MessageBus from "../../messages/MessageBus";
+import MessageBus from "../../messages/MessageBus.js";
 import {
   Grid,
   GridColor,
@@ -6,8 +6,8 @@ import {
   GridMeasurement,
   GridScale,
   GridType,
-} from "../../types/Grid";
-import { Vector2 } from "../../types/Vector2";
+} from "../../types/Grid.js";
+import { Vector2 } from "../../types/Vector2.js";
 
 class SceneGridApi {
   private messageBus: MessageBus;

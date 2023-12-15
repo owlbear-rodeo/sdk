@@ -1,7 +1,7 @@
-import PlayerApi from "../api/PlayerApi";
-import { Curve, CurveStyle } from "../types/items/Curve";
-import { Vector2 } from "../types/Vector2";
-import { GenericItemBuilder } from "./GenericItemBuilder";
+import PlayerApi from "../api/PlayerApi.js";
+import { Curve, CurveStyle } from "../types/items/Curve.js";
+import { Vector2 } from "../types/Vector2.js";
+import { GenericItemBuilder } from "./GenericItemBuilder.js";
 
 export class CurveBuilder extends GenericItemBuilder<CurveBuilder> {
   private _points: Vector2[];

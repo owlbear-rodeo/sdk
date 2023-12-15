@@ -1,7 +1,7 @@
-import { ImageContent } from "./ImageContent";
-import { ImageGrid } from "./ImageGrid";
-import { TextContent, TextItemType } from "./TextContent";
-import { Item } from "./Item";
+import { ImageContent } from "./ImageContent.js";
+import { ImageGrid } from "./ImageGrid.js";
+import { TextContent, TextItemType } from "./TextContent.js";
+import { Item } from "./Item.js";
 
 export interface Image extends Item {
   image: ImageContent;

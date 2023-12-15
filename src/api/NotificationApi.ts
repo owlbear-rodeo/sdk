@@ -1,4 +1,4 @@
-import MessageBus from "../messages/MessageBus";
+import MessageBus from "../messages/MessageBus.js";
 
 class NotificationApi {
   private messageBus: MessageBus;

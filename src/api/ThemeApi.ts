@@ -1,5 +1,5 @@
-import MessageBus from "../messages/MessageBus";
-import { Theme } from "../types/Theme";
+import MessageBus from "../messages/MessageBus.js";
+import { Theme } from "../types/Theme.js";
 
 class ThemeApi {
   private messageBus: MessageBus;

@@ -1,7 +1,7 @@
-import PlayerApi from "../api/PlayerApi";
-import { Line, LineStyle } from "../types/items/Line";
-import { Vector2 } from "../types/Vector2";
-import { GenericItemBuilder } from "./GenericItemBuilder";
+import PlayerApi from "../api/PlayerApi.js";
+import { Line, LineStyle } from "../types/items/Line.js";
+import { Vector2 } from "../types/Vector2.js";
+import { GenericItemBuilder } from "./GenericItemBuilder.js";
 
 export class LineBuilder extends GenericItemBuilder<LineBuilder> {
   private _style: LineStyle;

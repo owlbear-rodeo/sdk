@@ -1,6 +1,6 @@
-import { normalizeUrlObject } from "../common/normalize";
-import MessageBus from "../messages/MessageBus";
-import { Modal } from "../types/Modal";
+import { normalizeUrlObject } from "../common/normalize.js";
+import MessageBus from "../messages/MessageBus.js";
+import { Modal } from "../types/Modal.js";
 
 class ModalApi {
   private messageBus: MessageBus;

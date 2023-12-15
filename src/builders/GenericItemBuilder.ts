@@ -1,8 +1,8 @@
 import { v4 as uuid } from "uuid";
-import PlayerApi from "../api/PlayerApi";
-import { AttachmentBehavior, Item, Layer } from "../types/items/Item";
-import { Metadata } from "../types/Metadata";
-import { Vector2 } from "../types/Vector2";
+import PlayerApi from "../api/PlayerApi.js";
+import { AttachmentBehavior, Item, Layer } from "../types/items/Item.js";
+import { Metadata } from "../types/Metadata.js";
+import { Vector2 } from "../types/Vector2.js";
 
 // Shim the item to remove readonly properties
 type BuilderItem = Omit<Item, "id" | "lastModified" | "lastModifiedUserId"> & {

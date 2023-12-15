@@ -1,7 +1,7 @@
-import PlayerApi from "../api/PlayerApi";
-import { Label, LabelStyle } from "../types/items/Label";
-import { TextContent, TextSize } from "../types/items/TextContent";
-import { GenericItemBuilder } from "./GenericItemBuilder";
+import PlayerApi from "../api/PlayerApi.js";
+import { Label, LabelStyle } from "../types/items/Label.js";
+import { TextContent, TextSize } from "../types/items/TextContent.js";
+import { GenericItemBuilder } from "./GenericItemBuilder.js";
 
 export class LabelBuilder extends GenericItemBuilder<LabelBuilder> {
   private _text: TextContent;

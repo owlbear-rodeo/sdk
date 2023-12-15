@@ -1,6 +1,6 @@
-import { normalizeIconPaths } from "../common/normalize";
-import MessageBus from "../messages/MessageBus";
-import { Metadata } from "../types";
+import { normalizeIconPaths } from "../common/normalize.js";
+import MessageBus from "../messages/MessageBus.js";
+import { Metadata } from "../types/index.js";
 import {
   KeyEvent,
   Tool,
@@ -8,7 +8,7 @@ import {
   ToolContext,
   ToolEvent,
   ToolMode,
-} from "../types/Tool";
+} from "../types/Tool.js";
 
 class ToolApi {
   private messageBus: MessageBus;

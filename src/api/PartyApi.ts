@@ -1,5 +1,5 @@
-import MessageBus from "../messages/MessageBus";
-import { Player } from "../types";
+import MessageBus from "../messages/MessageBus.js";
+import { Player } from "../types/index.js";
 
 class PartyApi {
   private messageBus: MessageBus;

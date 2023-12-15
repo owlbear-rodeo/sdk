@@ -3,10 +3,10 @@ import {
   TextContent,
   TextContentType,
   TextSize,
-} from "../types/items/TextContent";
-import { Text } from "../types/items/Text";
-import { GenericItemBuilder } from "./GenericItemBuilder";
-import PlayerApi from "../api/PlayerApi";
+} from "../types/items/TextContent.js";
+import { Text } from "../types/items/Text.js";
+import { GenericItemBuilder } from "./GenericItemBuilder.js";
+import PlayerApi from "../api/PlayerApi.js";
 
 export class TextBuilder extends GenericItemBuilder<TextBuilder> {
   private _text: TextContent;

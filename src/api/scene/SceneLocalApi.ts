@@ -1,8 +1,9 @@
-import MessageBus from "../../messages/MessageBus";
-import { BoundingBox } from "../../types/BoundingBox";
-import { ItemFilter } from "../../types/ItemFilter";
-import { Item } from "../../types/items/Item";
+import MessageBus from "../../messages/MessageBus.js";
+import { BoundingBox } from "../../types/BoundingBox.js";
+import { ItemFilter } from "../../types/ItemFilter.js";
+import { Item } from "../../types/items/Item.js";
 import { enablePatches, produceWithPatches } from "immer";
+// @ts-ignore
 import { WritableDraft } from "immer/dist/internal";
 
 enablePatches();

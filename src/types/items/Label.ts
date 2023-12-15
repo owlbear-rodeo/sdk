@@ -1,5 +1,5 @@
-import { TextContent } from "./TextContent";
-import { Item } from "./Item";
+import { TextContent } from "./TextContent.js";
+import { Item } from "./Item.js";
 
 export interface LabelStyle {
   backgroundColor: string;

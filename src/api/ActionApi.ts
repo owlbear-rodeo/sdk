@@ -1,5 +1,5 @@
-import { normalizeIconPaths } from "../common/normalize";
-import MessageBus from "../messages/MessageBus";
+import { normalizeIconPaths } from "../common/normalize.js";
+import MessageBus from "../messages/MessageBus.js";
 
 class ActionApi {
   private messageBus: MessageBus;

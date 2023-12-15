@@ -1,7 +1,7 @@
-import MessageBus from "../messages/MessageBus";
-import { BoundingBox } from "../types";
-import { Vector2 } from "../types/Vector2";
-import { ViewportTransform } from "../types/ViewportTransform";
+import MessageBus from "../messages/MessageBus.js";
+import { BoundingBox } from "../types/index.js";
+import { Vector2 } from "../types/Vector2.js";
+import { ViewportTransform } from "../types/ViewportTransform.js";
 
 class ViewportApi {
   private messageBus: MessageBus;

@@ -6,7 +6,7 @@ import {
   ImageUpload,
   Item,
   SceneUpload,
-} from "../types";
+} from "../types/index.js";
 
 export class SceneUploadBuilder {
   private _upload: SceneUpload;

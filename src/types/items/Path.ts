@@ -1,4 +1,4 @@
-import { Item } from "./Item";
+import { Item } from "./Item.js";
 
 export interface PathStyle {
   fillColor: string;
@@ -30,7 +30,7 @@ export type ConicCommand = [
   number,
   number,
   number,
-  number
+  number,
 ];
 
 export type CubicCommand = [
@@ -40,7 +40,7 @@ export type CubicCommand = [
   number,
   number,
   number,
-  number
+  number,
 ];
 
 export type CloseCommand = [Command.CLOSE];

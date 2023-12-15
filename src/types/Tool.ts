@@ -1,8 +1,8 @@
-import { Item } from "./items/Item";
-import { KeyFilter } from "./KeyFilter";
-import { Metadata } from "./Metadata";
-import { Permission } from "./Permission";
-import { Vector2 } from "./Vector2";
+import { Item } from "./items/Item.js";
+import { KeyFilter } from "./KeyFilter.js";
+import { Metadata } from "./Metadata.js";
+import { Permission } from "./Permission.js";
+import { Vector2 } from "./Vector2.js";
 
 export interface ToolContext {
   activeTool: string;

@@ -1,6 +1,6 @@
-import { normalizeIconPaths, normalizeUrlObject } from "../common/normalize";
-import MessageBus from "../messages/MessageBus";
-import { ContextMenuContext, ContextMenuItem } from "../types/ContextMenu";
+import { normalizeIconPaths, normalizeUrlObject } from "../common/normalize.js";
+import MessageBus from "../messages/MessageBus.js";
+import { ContextMenuContext, ContextMenuItem } from "../types/ContextMenu.js";
 
 class ContextMenuApi {
   private messageBus: MessageBus;

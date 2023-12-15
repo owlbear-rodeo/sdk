@@ -1,5 +1,5 @@
-import MessageBus from "../../messages/MessageBus";
-import { Fog } from "../../types/Fog";
+import MessageBus from "../../messages/MessageBus.js";
+import { Fog } from "../../types/Fog.js";
 
 class SceneFogApi {
   private messageBus: MessageBus;

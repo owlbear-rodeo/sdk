@@ -1,7 +1,7 @@
-import PlayerApi from "../api/PlayerApi";
-import { Path, PathCommand, PathStyle } from "../types/items/Path";
-import { Vector2 } from "../types/Vector2";
-import { GenericItemBuilder } from "./GenericItemBuilder";
+import PlayerApi from "../api/PlayerApi.js";
+import { Path, PathCommand, PathStyle } from "../types/items/Path.js";
+import { Vector2 } from "../types/Vector2.js";
+import { GenericItemBuilder } from "./GenericItemBuilder.js";
 
 export class PathBuilder extends GenericItemBuilder<PathBuilder> {
   private _commands: PathCommand[];

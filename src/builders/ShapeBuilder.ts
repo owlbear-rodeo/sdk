@@ -1,6 +1,6 @@
-import PlayerApi from "../api/PlayerApi";
-import { Shape, ShapeStyle, ShapeType } from "../types/items/Shape";
-import { GenericItemBuilder } from "./GenericItemBuilder";
+import PlayerApi from "../api/PlayerApi.js";
+import { Shape, ShapeStyle, ShapeType } from "../types/items/Shape.js";
+import { GenericItemBuilder } from "./GenericItemBuilder.js";
 
 export class ShapeBuilder extends GenericItemBuilder<ShapeBuilder> {
   private _width: number;

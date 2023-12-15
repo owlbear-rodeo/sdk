@@ -1,5 +1,5 @@
-import { Metadata } from "../Metadata";
-import { Vector2 } from "../Vector2";
+import { Metadata } from "../Metadata.js";
+import { Vector2 } from "../Vector2.js";
 
 export type Layer =
   | "MAP"

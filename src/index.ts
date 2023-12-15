@@ -1,37 +1,37 @@
-import PlayerApi from "./api/PlayerApi";
-import ViewportApi from "./api/ViewportApi";
-import MessageBus from "./messages/MessageBus";
-import NotificationApi from "./api/NotificationApi";
-import SceneApi from "./api/scene/SceneApi";
-import ContextMenuApi from "./api/ContextMenuApi";
-import ToolApi from "./api/ToolApi";
-import PopoverApi from "./api/PopoverApi";
-import ModalApi from "./api/ModalApi";
-import ActionApi from "./api/ActionApi";
-import InteractionApi from "./api/InteractionApi";
-import PartyApi from "./api/PartyApi";
-import RoomApi from "./api/RoomApi";
-import ThemeApi from "./api/ThemeApi";
-import AssetsApi from "./api/AssetsApi";
+import PlayerApi from "./api/PlayerApi.js";
+import ViewportApi from "./api/ViewportApi.js";
+import MessageBus from "./messages/MessageBus.js";
+import NotificationApi from "./api/NotificationApi.js";
+import SceneApi from "./api/scene/SceneApi.js";
+import ContextMenuApi from "./api/ContextMenuApi.js";
+import ToolApi from "./api/ToolApi.js";
+import PopoverApi from "./api/PopoverApi.js";
+import ModalApi from "./api/ModalApi.js";
+import ActionApi from "./api/ActionApi.js";
+import InteractionApi from "./api/InteractionApi.js";
+import PartyApi from "./api/PartyApi.js";
+import RoomApi from "./api/RoomApi.js";
+import ThemeApi from "./api/ThemeApi.js";
+import AssetsApi from "./api/AssetsApi.js";
 
-import { CurveBuilder } from "./builders/CurveBuilder";
-import { ImageBuilder } from "./builders/ImageBuilder";
-import { LabelBuilder } from "./builders/LabelBuilder";
-import { LineBuilder } from "./builders/LineBuilder";
-import { PointerBuilder } from "./builders/PointerBuilder";
-import { RulerBuilder } from "./builders/RulerBuilder";
-import { ShapeBuilder } from "./builders/ShapeBuilder";
-import { TextBuilder } from "./builders/TextBuilder";
-import { PathBuilder } from "./builders/PathBuilder";
-import { ImageUploadBuilder } from "./builders/ImageUploadBuilder";
-import { SceneUploadBuilder } from "./builders/SceneUploadBuilder";
+import { CurveBuilder } from "./builders/CurveBuilder.js";
+import { ImageBuilder } from "./builders/ImageBuilder.js";
+import { LabelBuilder } from "./builders/LabelBuilder.js";
+import { LineBuilder } from "./builders/LineBuilder.js";
+import { PointerBuilder } from "./builders/PointerBuilder.js";
+import { RulerBuilder } from "./builders/RulerBuilder.js";
+import { ShapeBuilder } from "./builders/ShapeBuilder.js";
+import { TextBuilder } from "./builders/TextBuilder.js";
+import { PathBuilder } from "./builders/PathBuilder.js";
+import { ImageUploadBuilder } from "./builders/ImageUploadBuilder.js";
+import { SceneUploadBuilder } from "./builders/SceneUploadBuilder.js";
 
-import { ImageContent } from "./types/items/ImageContent";
-import { ImageGrid } from "./types/items/ImageGrid";
-import { getDetails } from "./common/getDetails";
+import { ImageContent } from "./types/items/ImageContent.js";
+import { ImageGrid } from "./types/items/ImageGrid.js";
+import { getDetails } from "./common/getDetails.js";
 
-export * from "./types";
-export * from "./math";
+export * from "./types/index.js";
+export * from "./math/index.js";
 
 const details = getDetails();
 

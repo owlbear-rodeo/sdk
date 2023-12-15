@@ -1,4 +1,4 @@
-import { Metadata } from "./Metadata";
+import { Metadata } from "./Metadata.js";
 
 export interface Player {
   id: string;

@@ -1,6 +1,6 @@
-import PlayerApi from "../api/PlayerApi";
-import { Pointer } from "../types/items/Pointer";
-import { GenericItemBuilder } from "./GenericItemBuilder";
+import PlayerApi from "../api/PlayerApi.js";
+import { Pointer } from "../types/items/Pointer.js";
+import { GenericItemBuilder } from "./GenericItemBuilder.js";
 
 export class PointerBuilder extends GenericItemBuilder<PointerBuilder> {
   private _color: string;

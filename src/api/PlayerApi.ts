@@ -1,7 +1,7 @@
-import MessageBus from "../messages/MessageBus";
-import { Metadata } from "../types/Metadata";
-import { Permission } from "../types/Permission";
-import { Player } from "../types/Player";
+import MessageBus from "../messages/MessageBus.js";
+import { Metadata } from "../types/Metadata.js";
+import { Permission } from "../types/Permission.js";
+import { Player } from "../types/Player.js";
 
 class PlayerApi {
   private messageBus: MessageBus;

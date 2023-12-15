@@ -6,8 +6,8 @@ import {
   TextItemType,
   TextSize,
   Vector2,
-} from "../types";
-import { ImageUpload } from "../types/Assets";
+} from "../types/index.js";
+import { ImageUpload } from "../types/Assets.js";
 
 export class ImageUploadBuilder {
   private _upload: ImageUpload;

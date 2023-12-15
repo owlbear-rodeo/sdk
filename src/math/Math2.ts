@@ -1,11 +1,11 @@
-import { Vector2 } from "../types/Vector2";
+import { Vector2 } from "../types/Vector2.js";
 import {
   toRadians,
   roundTo as roundToNumber,
   floorTo as floorToNumber,
   lerp as lerpNumber,
-} from "../common/number";
-import { BoundingBox } from "../types";
+} from "../common/number.js";
+import { BoundingBox } from "../types/index.js";
 
 /**
  * Math class for Vector2's

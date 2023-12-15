@@ -1,10 +1,10 @@
-import MessageBus from "../../messages/MessageBus";
-import { Metadata } from "../../types";
-import SceneFogApi from "./SceneFogApi";
-import SceneGridApi from "./SceneGridApi";
-import SceneHistoryApi from "./SceneHistoryApi";
-import SceneItemsApi from "./SceneItemsApi";
-import SceneLocalApi from "./SceneLocalApi";
+import MessageBus from "../../messages/MessageBus.js";
+import { Metadata } from "../../types/index.js";
+import SceneFogApi from "./SceneFogApi.js";
+import SceneGridApi from "./SceneGridApi.js";
+import SceneHistoryApi from "./SceneHistoryApi.js";
+import SceneItemsApi from "./SceneItemsApi.js";
+import SceneLocalApi from "./SceneLocalApi.js";
 
 class SceneApi {
   private messageBus: MessageBus;

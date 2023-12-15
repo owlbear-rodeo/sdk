@@ -1,9 +1,9 @@
-import { Fog } from "./Fog";
-import { Grid } from "./Grid";
-import { Vector2 } from "./Vector2";
-import { ImageGrid } from "./items/ImageGrid";
-import { Item } from "./items/Item";
-import { TextContent, TextItemType } from "./items/TextContent";
+import { Fog } from "./Fog.js";
+import { Grid } from "./Grid.js";
+import { Vector2 } from "./Vector2.js";
+import { ImageGrid } from "./items/ImageGrid.js";
+import { Item } from "./items/Item.js";
+import { TextContent, TextItemType } from "./items/TextContent.js";
 
 export interface SceneUpload {
   name: string;

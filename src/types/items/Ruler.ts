@@ -1,5 +1,5 @@
-import { Vector2 } from "../Vector2";
-import { Item } from "./Item";
+import { Vector2 } from "../Vector2.js";
+import { Item } from "./Item.js";
 
 export type RulerVariant = "FILLED" | "DASHED";
 

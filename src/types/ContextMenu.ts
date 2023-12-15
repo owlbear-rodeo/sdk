@@ -1,7 +1,7 @@
-import { BoundingBox } from "./BoundingBox";
-import { KeyFilter } from "./KeyFilter";
-import { Item } from "./items/Item";
-import { Permission } from "./Permission";
+import { BoundingBox } from "./BoundingBox.js";
+import { KeyFilter } from "./KeyFilter.js";
+import { Item } from "./items/Item.js";
+import { Permission } from "./Permission.js";
 
 export interface ContextMenuContext {
   items: Item[];

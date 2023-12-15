@@ -1,7 +1,7 @@
-import { toDegrees, toRadians } from "../common/number";
-import { Matrix } from "../types/Matrix";
-import { Vector2 } from "../types/Vector2";
-import { Item } from "../types/items/Item";
+import { toDegrees, toRadians } from "../common/number.js";
+import { Matrix } from "../types/Matrix.js";
+import { Vector2 } from "../types/Vector2.js";
+import { Item } from "../types/items/Item.js";
 
 /**
  * Math class for a 2D transformation Matrix

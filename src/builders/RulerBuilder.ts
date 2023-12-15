@@ -1,7 +1,7 @@
-import PlayerApi from "../api/PlayerApi";
-import { Ruler, RulerStyle, RulerVariant } from "../types/items/Ruler";
-import { Vector2 } from "../types/Vector2";
-import { GenericItemBuilder } from "./GenericItemBuilder";
+import PlayerApi from "../api/PlayerApi.js";
+import { Ruler, RulerStyle, RulerVariant } from "../types/items/Ruler.js";
+import { Vector2 } from "../types/Vector2.js";
+import { GenericItemBuilder } from "./GenericItemBuilder.js";
 
 export class RulerBuilder extends GenericItemBuilder<RulerBuilder> {
   private _startPosition: Vector2;

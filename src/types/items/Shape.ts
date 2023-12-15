@@ -1,4 +1,4 @@
-import { Item } from "./Item";
+import { Item } from "./Item.js";
 
 export interface ShapeStyle {
   fillColor: string;

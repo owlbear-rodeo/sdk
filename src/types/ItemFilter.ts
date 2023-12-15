@@ -1,4 +1,4 @@
-import { Item } from "./items/Item";
+import { Item } from "./items/Item.js";
 
 type ItemFilterArray = string[];
 type ItemTypeFilterFunction<ItemType extends Item> = (
