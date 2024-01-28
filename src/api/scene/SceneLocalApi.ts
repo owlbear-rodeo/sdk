@@ -3,7 +3,7 @@ import { BoundingBox } from "../../types/BoundingBox";
 import { ItemFilter } from "../../types/ItemFilter";
 import { Item } from "../../types/items/Item";
 import { enablePatches, produceWithPatches } from "immer";
-import { WritableDraft } from "immer/dist/internal";
+import { Draft } from "immer/dist/internal";
 
 enablePatches();
 
@@ -40,7 +40,7 @@ class SceneLocalApi {
 
   async updateItems<ItemType extends Item>(
     filter: ItemFilter<ItemType>,
-    update: (draft: WritableDraft<ItemType[]>) => void,
+    update: (draft: Draft<ItemType>[]) => void,
     fastUpdate?: boolean,
     updateAttachments = true,
   ) {

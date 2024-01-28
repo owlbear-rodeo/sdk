@@ -2,7 +2,7 @@ import MessageBus from "../../messages/MessageBus";
 import { ItemFilter } from "../../types/ItemFilter";
 import { Item } from "../../types/items/Item";
 import { enablePatches, produceWithPatches } from "immer";
-import { WritableDraft } from "immer/dist/internal";
+import { Draft } from "immer/dist/internal";
 import { BoundingBox } from "../../types/BoundingBox";
 
 enablePatches();
@@ -46,7 +46,7 @@ class SceneItemsApi {
 
   async updateItems<ItemType extends Item>(
     filterOrItems: ItemFilter<ItemType> | ItemType[],
-    update: (draft: WritableDraft<ItemType[]>) => void,
+    update: (draft: Draft<ItemType>[]) => void,
     updateAttachments = true,
   ) {
     let items: ItemType[];
