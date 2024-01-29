@@ -90,17 +90,21 @@ class MessageBus extends EventEmitter {
         this.on(`${id}_RESPONSE${nonce}`, onResponse);
         this.on(`${id}_ERROR${nonce}`, onError);
       }),
-      new Promise<ReturnValue>((_, reject) =>
-        window.setTimeout(
-          () =>
-            reject(
-              new Error(
-                `Message ${id} took longer than ${timeout}ms to get a result`,
+      ...(timeout > 0
+        ? [
+            new Promise<ReturnValue>((_, reject) =>
+              window.setTimeout(
+                () =>
+                  reject(
+                    new Error(
+                      `Message ${id} took longer than ${timeout}ms to get a result`,
+                    ),
+                  ),
+                timeout,
               ),
             ),
-          timeout,
-        ),
-      ),
+          ]
+        : []),
     ]);
   };
 }
