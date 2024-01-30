@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tsc --build",
     "lint": "eslint . --ext .ts",
-    "format": "prettier --config .prettierrc 'src/**/*.ts' --write"
+    "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "prepare": "npm run build"
   },
   "files": [
     "lib/**/*"
