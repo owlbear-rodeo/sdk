@@ -26,3 +26,10 @@ export interface ImageUpload {
   scale: Vector2;
   description?: string;
 }
+export type ImageAssetType =
+  | "MAP"
+  | "PROP"
+  | "MOUNT"
+  | "CHARACTER"
+  | "ATTACHMENT"
+  | "NOTE";

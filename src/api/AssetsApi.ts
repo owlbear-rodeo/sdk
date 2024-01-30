@@ -8,8 +8,14 @@ class AssetsApi {
     this.messageBus = messageBus;
   }
 
-  async uploadImages(images: ImageUpload[]): Promise<void> {
-    await this.messageBus.sendAsync("OBR_ASSETS_UPLOAD_IMAGES", { images });
+  async uploadImages(
+    images: ImageUpload[],
+    typeHint?: ImageAssetType,
+  ): Promise<void> {
+    await this.messageBus.sendAsync("OBR_ASSETS_UPLOAD_IMAGES", {
+      images,
+      typeHint,
+    });
   }
 
   async uploadScenes(scenes: SceneUpload[]): Promise<void> {
