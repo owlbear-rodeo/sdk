@@ -18,8 +18,15 @@ class AssetsApi {
     });
   }
 
-  async uploadScenes(scenes: SceneUpload[]): Promise<void> {
-    await this.messageBus.sendAsync("OBR_ASSETS_UPLOAD_SCENES", { scenes });
+  async uploadScenes(
+    scenes: SceneUpload[],
+    disableShowScenes?: boolean,
+  ): Promise<void> {
+    await this.messageBus.sendAsync("OBR_ASSETS_UPLOAD_SCENES", {
+      scenes,
+      disableShowScenes,
+    });
+  }
   }
 }
 
