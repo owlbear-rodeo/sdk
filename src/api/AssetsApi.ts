@@ -1,5 +1,11 @@
 import MessageBus from "../messages/MessageBus";
-import { ImageUpload, SceneUpload } from "../types";
+import {
+  ImageAssetType,
+  ImageDownload,
+  ImageUpload,
+  SceneDownload,
+  SceneUpload,
+} from "../types";
 
 class AssetsApi {
   private messageBus: MessageBus;
@@ -27,6 +33,26 @@ class AssetsApi {
       disableShowScenes,
     });
   }
+
+  async downloadImages(
+    multiple?: boolean,
+    defaultSearch?: string,
+    typeHint?: ImageAssetType,
+  ): Promise<ImageDownload[]> {
+    const { images } = await this.messageBus.sendAsync<{
+      images: ImageDownload[];
+    }>("OBR_ASSETS_DOWNLOAD_IMAGES", { multiple, defaultSearch, typeHint }, -1);
+    return images;
+  }
+
+  async downloadScenes(
+    multiple?: boolean,
+    defaultSearch?: string,
+  ): Promise<SceneDownload[]> {
+    const { scenes } = await this.messageBus.sendAsync<{
+      scenes: SceneDownload[];
+    }>("OBR_ASSETS_DOWNLOAD_SCENES", { multiple, defaultSearch }, -1);
+    return scenes;
   }
 }
 
