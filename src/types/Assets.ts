@@ -11,6 +11,7 @@ export interface SceneUpload {
   fog: Fog;
   items: Item[];
   baseMap?: ImageUpload;
+  thumbnail?: File | Blob;
 }
 
 export interface ImageUpload {

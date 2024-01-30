@@ -86,6 +86,11 @@ export class SceneUploadBuilder {
     return this;
   }
 
+  thumbnail(thumbnail: File | Blob): SceneUploadBuilder {
+    this._upload.thumbnail = thumbnail;
+    return this;
+  }
+
   build(): SceneUpload {
     return this._upload;
   }
