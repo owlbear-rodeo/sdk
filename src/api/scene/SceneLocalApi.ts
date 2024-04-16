@@ -38,13 +38,24 @@ class SceneLocalApi {
     }
   }
 
+  private isItemArray(value: any): value is Item[] {
+    return (
+      Array.isArray(value) && value.every((item) => typeof item !== "string")
+    );
+  }
+
   async updateItems<ItemType extends Item>(
-    filter: ItemFilter<ItemType>,
+    filterOrItems: ItemFilter<ItemType> | ItemType[],
     update: (draft: Draft<ItemType>[]) => void,
     fastUpdate?: boolean,
     updateAttachments = true,
   ) {
-    const items = await this.getItems(filter);
+    let items: ItemType[];
+    if (this.isItemArray(filterOrItems)) {
+      items = filterOrItems;
+    } else {
+      items = await this.getItems(filterOrItems);
+    }
     const [nextState, patches] = produceWithPatches(items, update);
     const nextUpdates: Partial<Item>[] = nextState.map((item) => ({
       id: item.id,
