@@ -7,10 +7,15 @@ class BroadcastApi {
     this.messageBus = messageBus;
   }
 
-  async sendMessage(channel: string, data: unknown): Promise<void> {
+  async sendMessage(
+    channel: string,
+    data: unknown,
+    options?: { destination: "REMOTE" | "LOCAL" | "ALL" },
+  ): Promise<void> {
     await this.messageBus.sendAsync("OBR_BROADCAST_SEND_MESSAGE", {
       channel,
       data,
+      options,
     });
   }
 
