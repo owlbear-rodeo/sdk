@@ -1,5 +1,6 @@
 export * from "./items/Billboard";
 export * from "./items/Curve";
+export * from "./items/Effect";
 export * from "./items/Image";
 export * from "./items/ImageContent";
 export * from "./items/ImageGrid";

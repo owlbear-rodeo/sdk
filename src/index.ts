@@ -31,6 +31,7 @@ import { ImageContent } from "./types/items/ImageContent";
 import { ImageGrid } from "./types/items/ImageGrid";
 import { getDetails } from "./common/getDetails";
 import { BillboardBuilder } from "./builders/BillboardBuilder";
+import { EffectBuilder } from "./builders/EffectBuilder";
 
 export * from "./types";
 export * from "./math";
@@ -93,6 +94,10 @@ function buildCurve() {
   return new CurveBuilder(playerApi);
 }
 
+function buildEffect() {
+  return new EffectBuilder(playerApi);
+}
+
 function buildImage(image: ImageContent, grid: ImageGrid) {
   return new ImageBuilder(playerApi, image, grid);
 }
@@ -136,6 +141,7 @@ function buildSceneUpload() {
 export {
   buildBillboard,
   buildCurve,
+  buildEffect,
   buildImage,
   buildLabel,
   buildLine,
