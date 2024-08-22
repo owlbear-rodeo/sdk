@@ -32,6 +32,7 @@ import { ImageGrid } from "./types/items/ImageGrid";
 import { getDetails } from "./common/getDetails";
 import { BillboardBuilder } from "./builders/BillboardBuilder";
 import { EffectBuilder } from "./builders/EffectBuilder";
+import { LightBuilder } from "./builders/LightBuilder";
 
 export * from "./types";
 export * from "./math";
@@ -106,6 +107,10 @@ function buildLabel() {
   return new LabelBuilder(playerApi);
 }
 
+function buildLight() {
+  return new LightBuilder(playerApi);
+}
+
 function buildLine() {
   return new LineBuilder(playerApi);
 }
@@ -144,6 +149,7 @@ export {
   buildEffect,
   buildImage,
   buildLabel,
+  buildLight,
   buildLine,
   buildPointer,
   buildRuler,

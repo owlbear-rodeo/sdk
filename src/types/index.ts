@@ -6,6 +6,7 @@ export * from "./items/ImageContent";
 export * from "./items/ImageGrid";
 export * from "./items/Item";
 export * from "./items/Label";
+export * from "./items/Light";
 export * from "./items/Line";
 export * from "./items/Pointer";
 export * from "./items/Ruler";
