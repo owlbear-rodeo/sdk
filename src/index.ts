@@ -33,6 +33,7 @@ import { getDetails } from "./common/getDetails";
 import { BillboardBuilder } from "./builders/BillboardBuilder";
 import { EffectBuilder } from "./builders/EffectBuilder";
 import { LightBuilder } from "./builders/LightBuilder";
+import { WallBuilder } from "./builders/WallBuilder";
 
 export * from "./types";
 export * from "./math";
@@ -135,6 +136,10 @@ function buildPath() {
   return new PathBuilder(playerApi);
 }
 
+function buildWall() {
+  return new WallBuilder(playerApi);
+}
+
 function buildImageUpload(file: File | Blob) {
   return new ImageUploadBuilder(file);
 }
@@ -156,6 +161,7 @@ export {
   buildShape,
   buildText,
   buildPath,
+  buildWall,
   buildImageUpload,
   buildSceneUpload,
 };
