@@ -8,6 +8,8 @@ export interface LabelStyle {
   pointerWidth?: number;
   pointerHeight?: number;
   pointerDirection?: "UP" | "DOWN" | "LEFT" | "RIGHT";
+  maxViewScale?: number;
+  minViewScale?: number;
 }
 
 export interface Label extends Item {

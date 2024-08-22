@@ -166,6 +166,16 @@ export class LabelBuilder extends GenericItemBuilder<LabelBuilder> {
     return this.self();
   }
 
+  maxViewScale(maxViewScale: number): LabelBuilder {
+    this._style.maxViewScale = maxViewScale;
+    return this.self();
+  }
+
+  minViewScale(minViewScale: number): LabelBuilder {
+    this._style.minViewScale = minViewScale;
+    return this.self();
+  }
+
   build(): Label {
     return {
       ...this._item,
