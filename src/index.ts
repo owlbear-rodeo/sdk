@@ -30,6 +30,7 @@ import { SceneUploadBuilder } from "./builders/SceneUploadBuilder";
 import { ImageContent } from "./types/items/ImageContent";
 import { ImageGrid } from "./types/items/ImageGrid";
 import { getDetails } from "./common/getDetails";
+import { BillboardBuilder } from "./builders/BillboardBuilder";
 
 export * from "./types";
 export * from "./math";
@@ -84,6 +85,10 @@ const OBR = {
   isAvailable: Boolean(details.origin),
 };
 
+function buildBillboard(image: ImageContent, grid: ImageGrid) {
+  return new BillboardBuilder(playerApi, image, grid);
+}
+
 function buildCurve() {
   return new CurveBuilder(playerApi);
 }
@@ -129,6 +134,7 @@ function buildSceneUpload() {
 }
 
 export {
+  buildBillboard,
   buildCurve,
   buildImage,
   buildLabel,

@@ -1,3 +1,4 @@
+export * from "./items/Billboard";
 export * from "./items/Curve";
 export * from "./items/Image";
 export * from "./items/ImageContent";
