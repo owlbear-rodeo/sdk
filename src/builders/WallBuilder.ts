@@ -16,6 +16,7 @@ export class WallBuilder extends GenericItemBuilder<WallBuilder> {
     this._item.name = "Wall";
     this._item.layer = "FOG";
     this._item.zIndex = 0;
+    this._item.disableAutoZIndex = true;
   }
 
   points(points: Vector2[]): WallBuilder {
