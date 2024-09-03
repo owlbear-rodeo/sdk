@@ -1,5 +1,5 @@
 import PlayerApi from "../api/PlayerApi";
-import { Light } from "../types/items/Light";
+import { Light, LightType } from "../types/items/Light";
 import { GenericItemBuilder } from "./GenericItemBuilder";
 
 export class LightBuilder extends GenericItemBuilder<LightBuilder> {
@@ -8,6 +8,7 @@ export class LightBuilder extends GenericItemBuilder<LightBuilder> {
   private _falloff: number;
   private _innerAngle: number;
   private _outerAngle: number;
+  private _lightType: LightType;
 
   constructor(player: PlayerApi) {
     super(player);
@@ -16,6 +17,7 @@ export class LightBuilder extends GenericItemBuilder<LightBuilder> {
     this._falloff = 1.0;
     this._innerAngle = 360;
     this._outerAngle = 360;
+    this._lightType = "PRIMARY";
     this._item.name = "Light";
     this._item.layer = "FOG";
     this._item.zIndex = 0;
@@ -47,6 +49,11 @@ export class LightBuilder extends GenericItemBuilder<LightBuilder> {
     return this.self();
   }
 
+  lightType(lightType: LightType): LightBuilder {
+    this._lightType = lightType;
+    return this.self();
+  }
+
   build(): Light {
     return {
       ...this._item,
@@ -56,6 +63,7 @@ export class LightBuilder extends GenericItemBuilder<LightBuilder> {
       falloff: this._falloff,
       innerAngle: this._innerAngle,
       outerAngle: this._outerAngle,
+      lightType: this._lightType,
     };
   }
 }
