@@ -14,6 +14,7 @@ export type Layer =
   | "RULER"
   | "FOG"
   | "POINTER"
+  | "POST_PROCESS"
   | "CONTROL"
   | "POPOVER";
 
