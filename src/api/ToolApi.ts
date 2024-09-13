@@ -313,6 +313,26 @@ class ToolApi {
     await this.messageBus.sendAsync("OBR_TOOL_ACTIVATE", { id });
   }
 
+  async getActiveTool(): Promise<string> {
+    const { id } = await this.messageBus.sendAsync<{ id: string }>(
+      "OBR_TOOL_GET_ACTIVE",
+      {},
+    );
+    return id;
+  }
+
+  onToolChange(callback: (id: string) => void) {
+    const handleChange = (data: { id: string }) => {
+      callback(data.id);
+    };
+    this.messageBus.send("OBR_TOOL_ACTIVE_SUBSCRIBE", {});
+    this.messageBus.on("OBR_TOOL_ACTIVE_EVENT_CHANGE", handleChange);
+    return () => {
+      this.messageBus.send("OBR_TOOL_ACTIVE_UNSUBSCRIBE", {});
+      this.messageBus.off("OBR_TOOL_ACTIVE_EVENT_CHANGE", handleChange);
+    };
+  }
+
   async getMetadata(id: string): Promise<Metadata | undefined> {
     const { metadata } = await this.messageBus.sendAsync<{
       metadata?: Metadata;
@@ -366,6 +386,26 @@ class ToolApi {
       toolId,
       modeId,
     });
+  }
+
+  async getActiveToolMode(): Promise<string | undefined> {
+    const { id } = await this.messageBus.sendAsync<{ id?: string }>(
+      "OBR_TOOL_MODE_GET_ACTIVE",
+      {},
+    );
+    return id;
+  }
+
+  onToolModeChange(callback: (id: string) => void) {
+    const handleChange = (data: { id: string }) => {
+      callback(data.id);
+    };
+    this.messageBus.send("OBR_TOOL_MODE_ACTIVE_SUBSCRIBE", {});
+    this.messageBus.on("OBR_TOOL_MODE_ACTIVE_EVENT_CHANGE", handleChange);
+    return () => {
+      this.messageBus.send("OBR_TOOL_MODE_ACTIVE_UNSUBSCRIBE", {});
+      this.messageBus.off("OBR_TOOL_MODE_ACTIVE_EVENT_CHANGE", handleChange);
+    };
   }
 }
 
