@@ -1,6 +1,6 @@
 import { Item } from "./Item";
 
-export type LightType = "PRIMARY" | "SECONDARY";
+export type LightType = "PRIMARY" | "SECONDARY" | "AUXILIARY";
 
 export interface Light extends Item {
   type: "LIGHT";
