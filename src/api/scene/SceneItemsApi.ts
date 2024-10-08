@@ -47,7 +47,6 @@ class SceneItemsApi {
   async updateItems<ItemType extends Item>(
     filterOrItems: ItemFilter<ItemType> | ItemType[],
     update: (draft: Draft<ItemType>[]) => void,
-    updateAttachments = true,
   ) {
     let items: ItemType[];
     if (this.isItemArray(filterOrItems)) {
@@ -77,7 +76,6 @@ class SceneItemsApi {
     }
     await this.messageBus.sendAsync("OBR_SCENE_ITEMS_UPDATE_ITEMS", {
       updates,
-      updateAttachments,
     });
   }
 

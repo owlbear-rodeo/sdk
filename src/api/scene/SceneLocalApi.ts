@@ -48,7 +48,6 @@ class SceneLocalApi {
     filterOrItems: ItemFilter<ItemType> | ItemType[],
     update: (draft: Draft<ItemType>[]) => void,
     fastUpdate?: boolean,
-    updateAttachments = true,
   ) {
     let items: ItemType[];
     if (this.isItemArray(filterOrItems)) {
@@ -79,7 +78,6 @@ class SceneLocalApi {
     await this.messageBus.sendAsync("OBR_SCENE_LOCAL_UPDATE_ITEMS", {
       updates,
       fastUpdate,
-      updateAttachments,
     });
   }
 
