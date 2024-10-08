@@ -2,8 +2,7 @@ import MessageBus from "../../messages/MessageBus";
 import { BoundingBox } from "../../types/BoundingBox";
 import { ItemFilter } from "../../types/ItemFilter";
 import { Item } from "../../types/items/Item";
-import { enablePatches, produceWithPatches } from "immer";
-import { Draft } from "immer/dist/internal";
+import { Draft, enablePatches, produceWithPatches } from "immer";
 
 enablePatches();
 
