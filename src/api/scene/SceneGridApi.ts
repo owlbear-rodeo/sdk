@@ -98,6 +98,19 @@ class SceneGridApi {
     });
   }
 
+  async getLineWidth(): Promise<number> {
+    const { lineWidth } = await this.messageBus.sendAsync<{
+      lineWidth: number;
+    }>("OBR_SCENE_GRID_GET_LINE_WIDTH", {});
+    return lineWidth;
+  }
+
+  async setLineWidth(lineWidth: number): Promise<void> {
+    await this.messageBus.sendAsync("OBR_SCENE_GRID_SET_LINE_WIDTH", {
+      lineWidth,
+    });
+  }
+
   async snapPosition(
     position: Vector2,
     snappingSensitivity?: number,

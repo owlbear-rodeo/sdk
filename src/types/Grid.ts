@@ -1,4 +1,4 @@
-export type GridColor = "DARK" | "LIGHT" | "HIGHLIGHT";
+export type GridColor = "DARK" | "LIGHT" | "HIGHLIGHT" | string;
 
 export interface GridScale {
   raw: string;
@@ -12,14 +12,20 @@ export interface GridScale {
   };
 }
 
-export type GridType = "SQUARE" | "HEX_VERTICAL" | "HEX_HORIZONTAL";
+export type GridType =
+  | "SQUARE"
+  | "HEX_VERTICAL"
+  | "HEX_HORIZONTAL"
+  | "DIMETRIC"
+  | "ISOMETRIC";
 
-export type GridLineType = "SOLID" | "DASHED";
+export type GridLineType = "SOLID" | "DASHED" | "DOTTED";
 
 export interface GridStyle {
   lineType: GridLineType;
   lineOpacity: number;
   lineColor: GridColor;
+  lineWidth: number;
 }
 
 export type GridMeasurement =
