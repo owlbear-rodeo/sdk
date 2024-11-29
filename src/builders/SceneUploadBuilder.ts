@@ -18,7 +18,12 @@ export class SceneUploadBuilder {
       grid: {
         dpi: 150,
         scale: "5ft",
-        style: { lineColor: "LIGHT", lineOpacity: 0.4, lineType: "DASHED" },
+        style: {
+          lineColor: "LIGHT",
+          lineOpacity: 0.4,
+          lineType: "DASHED",
+          lineWidth: 2,
+        },
         measurement: "CHEBYSHEV",
         type: "SQUARE",
       },
